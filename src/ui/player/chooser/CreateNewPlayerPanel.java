@@ -28,7 +28,7 @@ public class CreateNewPlayerPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CreateNewPlayerPanel(Consumer<Player> callback) {
+	public CreateNewPlayerPanel(Consumer<Player> callback, Runnable goBack) {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		JPanel topPanel = new JPanel();
@@ -90,7 +90,7 @@ public class CreateNewPlayerPanel extends JPanel {
 		add(acceptPanel);
 		acceptPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		btnOkay = new JButton("Okay");
+		btnOkay = new JButton("Next");
 		btnOkay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -112,6 +112,14 @@ public class CreateNewPlayerPanel extends JPanel {
 
 			}
 		});
+
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				goBack.run();
+			}
+		});
+		acceptPanel.add(btnCancel);
 		acceptPanel.add(btnOkay);
 
 		btnOkay.setEnabled(false);

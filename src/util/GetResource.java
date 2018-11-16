@@ -42,4 +42,8 @@ public class GetResource {
 		return getImage("\\res\\images\\player\\defaultUserImage.jpg");
 	}
 
+	public static Image getSoftwareIcon() {
+		return getImage("\\res\\logo\\logo.png");
+	}
+
 }

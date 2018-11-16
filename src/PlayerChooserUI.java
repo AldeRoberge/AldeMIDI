@@ -11,6 +11,7 @@ import ui.player.chooser.ChooseExistingOrNewPlayerPanel;
 import ui.player.chooser.CreateNewPlayerPanel;
 import ui.player.chooser.SelectExistingPlayerPanel;
 import user.Player;
+import util.GetResource;
 
 public class PlayerChooserUI {
 
@@ -43,8 +44,10 @@ public class PlayerChooserUI {
 	 */
 	public PlayerChooserUI(Consumer<Player> callback) {
 		frame = new UtilityJFrame();
+		frame.setTitle("Player Selection");
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setIconImage(GetResource.getSoftwareIcon());
 
 		existingOrReturning = new ChooseExistingOrNewPlayerPanel(new Consumer<Boolean>() {
 
@@ -58,6 +61,11 @@ public class PlayerChooserUI {
 						public void accept(Player t) {
 							callback.accept(t);
 						}
+					}, new Runnable() {
+						@Override
+						public void run() {
+							setMainMenu();
+						}
 					});
 
 					setView(selectExistingPanel);
@@ -70,6 +78,12 @@ public class PlayerChooserUI {
 						public void accept(Player t) {
 							callback.accept(t);
 						}
+					}, new Runnable() {
+						@Override
+						public void run() {
+							setMainMenu();
+						}
+
 					});
 
 					setView(createNewPlayerPanel);
@@ -81,6 +95,10 @@ public class PlayerChooserUI {
 
 		setView(existingOrReturning);
 		frame.setVisible(true);
+	}
+
+	private void setMainMenu() {
+		setView(existingOrReturning);
 	}
 
 	private void setView(JPanel jpanel) {

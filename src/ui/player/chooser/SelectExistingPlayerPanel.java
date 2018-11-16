@@ -1,4 +1,5 @@
 package ui.player.chooser;
+
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +19,7 @@ public class SelectExistingPlayerPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public SelectExistingPlayerPanel(Consumer<Player> callback) {
+	public SelectExistingPlayerPanel(Consumer<Player> callback, Runnable goBack) {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		JPanel panel = new JPanel();
@@ -44,12 +45,20 @@ public class SelectExistingPlayerPanel extends JPanel {
 		add(acceptPanel);
 		acceptPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		JButton btnOkay = new JButton("Okay");
+		JButton btnOkay = new JButton("Next");
 		btnOkay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				callback.accept((Player) playersComboBox.getSelectedItem());
 			}
 		});
+
+		JButton btnBack = new JButton("Cancel");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				goBack.run();
+			}
+		});
+		acceptPanel.add(btnBack);
 		acceptPanel.add(btnOkay);
 
 	}

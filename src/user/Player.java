@@ -34,7 +34,7 @@ public class Player implements Serializable {
 	public void setImage(BufferedImage image) {
 
 		if (image.getHeight() > 100 || image.getWidth() > 100) {
-			int ratio = image.getHeight() / image.getWidth();
+			int ratio = image.getWidth() / image.getHeight();
 			image = ResizeBufferedImage.resize(image, 200, 200 * ratio);
 		}
 
@@ -72,7 +72,7 @@ public class Player implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User:[" + name + "]";
+		return name;
 	}
 
 	private void save() {

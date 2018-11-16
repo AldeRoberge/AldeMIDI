@@ -1,4 +1,5 @@
 package ui.player.chooser;
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,6 +35,7 @@ public class ChooseExistingOrNewPlayerPanel extends JPanel {
 		add(buttonPanel);
 
 		JButton existingPlayerButton = new JButton("Existing player");
+		existingPlayerButton.setFocusable(false);
 		existingPlayerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				callback.accept(true);
@@ -42,6 +44,7 @@ public class ChooseExistingOrNewPlayerPanel extends JPanel {
 		buttonPanel.add(existingPlayerButton);
 
 		JButton newPlayerButton = new JButton("New player");
+		newPlayerButton.requestFocus();
 		newPlayerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				callback.accept(false);

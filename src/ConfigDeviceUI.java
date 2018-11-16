@@ -44,7 +44,7 @@ public class ConfigDeviceUI {
 		frame.setTitle("Configuration");
 		frame.setBounds(100, 100, 531, 207);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setIconImage(GetResource.getBufferedImage("/res/logo/logo.png"));
+		frame.setIconImage(GetResource.getSoftwareIcon());
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout(0, 0));
@@ -78,6 +78,7 @@ public class ConfigDeviceUI {
 			public void actionPerformed(ActionEvent e) {
 				showMessage("Awesome! Let's do it.");
 				callBack.accept(performDevice, audioDevice);
+				frame.dispose();
 			}
 		});
 		btnNext.setBackground(Color.GREEN);
