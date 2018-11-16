@@ -7,6 +7,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiConsumer;
 
 import javax.sound.midi.MidiDevice.Info;
 import javax.sound.midi.MidiSystem;
@@ -26,7 +27,7 @@ import midi.NotePlayer;
 import midi.TestKeyboard;
 import util.GetResource;
 
-public class ConfigUI {
+public class ConfigDeviceUI {
 
 	UtilityJFrame frame;
 
@@ -38,19 +39,12 @@ public class ConfigUI {
 	/**
 	 * Create the application.
 	 */
-	public ConfigUI() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+	public ConfigDeviceUI(BiConsumer<Device, NotePlayer> callBack) {
 		frame = new UtilityJFrame();
 		frame.setTitle("Configuration");
 		frame.setBounds(100, 100, 531, 207);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setIconImage(GetResource.getBufferedImage("/logo/logo.png"));
+		frame.setIconImage(GetResource.getBufferedImage("/res/logo/logo.png"));
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout(0, 0));
@@ -83,7 +77,7 @@ public class ConfigUI {
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showMessage("Awesome! Let's do it.");
-				System.exit(0);
+				callBack.accept(performDevice, audioDevice);
 			}
 		});
 		btnNext.setBackground(Color.GREEN);
@@ -208,6 +202,9 @@ public class ConfigUI {
 		for (NotePlayer d : findMidiDevices()) {
 			soundDeviceSelector.addItem(d);
 		}
+
+		frame.setVisible(true);
+
 	}
 
 	public static List<Device> findMidiDevices() {

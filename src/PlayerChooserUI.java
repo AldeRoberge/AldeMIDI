@@ -1,4 +1,3 @@
-package ui.player.chooser;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -8,9 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import alde.commons.util.window.UtilityJFrame;
+import ui.player.chooser.ChooseExistingOrNewPlayerPanel;
+import ui.player.chooser.CreateNewPlayerPanel;
+import ui.player.chooser.SelectExistingPlayerPanel;
 import user.Player;
 
-public class MainPlayerChooserUI {
+public class PlayerChooserUI {
 
 	JPanel existingOrReturning;
 
@@ -23,13 +25,12 @@ public class MainPlayerChooserUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainPlayerChooserUI window = new MainPlayerChooserUI(new Consumer<Player>() {
+					PlayerChooserUI window = new PlayerChooserUI(new Consumer<Player>() {
 						@Override
 						public void accept(Player p) {
 							System.out.println("Received player : " + p.getName());
 						}
 					});
-					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -40,7 +41,7 @@ public class MainPlayerChooserUI {
 	/**
 	 * Create the application.
 	 */
-	public MainPlayerChooserUI(Consumer<Player> callback) {
+	public PlayerChooserUI(Consumer<Player> callback) {
 		frame = new UtilityJFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,7 +80,7 @@ public class MainPlayerChooserUI {
 		});
 
 		setView(existingOrReturning);
-
+		frame.setVisible(true);
 	}
 
 	private void setView(JPanel jpanel) {
