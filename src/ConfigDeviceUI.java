@@ -41,8 +41,9 @@ public class ConfigDeviceUI {
 	 */
 	public ConfigDeviceUI(BiConsumer<Device, NotePlayer> callBack) {
 		frame = new UtilityJFrame();
+		frame.setResizable(false);
 		frame.setTitle("Configuration");
-		frame.setBounds(100, 100, 531, 207);
+		frame.setBounds(100, 100, 530, 210);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setIconImage(GetResource.getSoftwareIcon());
 
@@ -184,7 +185,7 @@ public class ConfigDeviceUI {
 		});
 
 		btnTestAudio.setBackground(Color.BLUE);
-		btnTestAudio.setBounds(366, 79, 114, 23);
+		btnTestAudio.setBounds(356, 76, 124, 28);
 		optionsPanel.add(btnTestAudio);
 
 		JButton btnTestInput = new JButton("Test input");
@@ -197,7 +198,7 @@ public class ConfigDeviceUI {
 			}
 		});
 		btnTestInput.setBackground(Color.BLUE);
-		btnTestInput.setBounds(366, 14, 114, 23);
+		btnTestInput.setBounds(356, 11, 124, 28);
 		optionsPanel.add(btnTestInput);
 
 		for (NotePlayer d : findMidiDevices()) {
