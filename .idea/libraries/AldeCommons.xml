@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="AldeCommons">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Documents/GitHub/AldeCommons" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Documents/GitHub/AldeCommons/src/main/java" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Documents/GitHub/AldeCommons" recursive="false" />
+  </library>
+</component>

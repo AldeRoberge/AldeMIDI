@@ -11,22 +11,24 @@ import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Receiver;
 import javax.sound.midi.ShortMessage;
 
+import midi.note.Note;
+
 /**
  * MidiDevice wrapper with a few utilities
  *
  */
 public class Device implements NotePlayer {
 
-	public MidiDevice midiDevice;
-	public Receiver receiver;
+	private MidiDevice midiDevice;
+	private Receiver receiver;
 
-	boolean isOpened = false;
+	short volume = 90; //MIDI velocity (max 127)
+
+	private boolean isOpened = false;
 
 	public Device(MidiDevice midiDevice) {
 		System.out.println("MidiDevice is a " + midiDevice.getClass().getName());
-
 		this.midiDevice = midiDevice;
-
 	}
 
 	List<Consumer<ShortMessage>> listeners = new ArrayList<>();
@@ -92,7 +94,6 @@ public class Device implements NotePlayer {
 	}
 
 	private void send(ShortMessage msg) {
-
 		long timeStamp = -1;
 		receiver.send(msg, timeStamp);
 	}
@@ -122,8 +123,8 @@ public class Device implements NotePlayer {
 	}
 
 	@Override
-	public void playNote(String note) { //TODO implement this
-		playNote(60, 90);
+	public void playNote(Note note) {
+		playNote(note.getMidi(), 90);
 	}
 
 }

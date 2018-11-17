@@ -1,8 +1,10 @@
 package midi;
 
+import midi.note.Note;
+
 public interface NotePlayer {
 
-	void playNote(String note);
+	void playNote(Note note);
 
 	public String toString();
 

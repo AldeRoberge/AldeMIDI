@@ -25,6 +25,8 @@ import midi.ArtificialSynthDevice;
 import midi.Device;
 import midi.NotePlayer;
 import midi.TestKeyboard;
+import midi.note.Note;
+import midi.note.Octave;
 import util.GetResource;
 
 public class ConfigDeviceUI {
@@ -173,9 +175,9 @@ public class ConfigDeviceUI {
 
 				if (audioDevice != null) {
 
-					System.out.println("Playing note 'C5' on '" + audioDevice + "'.");
+					System.out.println("Playing midi.note 'C5' on '" + audioDevice + "'.");
 
-					audioDevice.playNote("C5");
+					//audioDevice.playNote(Note.C.getMidi(Octave.Five));
 
 				} else {
 					System.err.println("Audio device is null!");

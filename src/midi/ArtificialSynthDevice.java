@@ -3,6 +3,8 @@ package midi;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 
+import midi.note.Note;
+
 public class ArtificialSynthDevice implements NotePlayer {
 
 	static ArtificialSynthDevice instance;
@@ -21,11 +23,10 @@ public class ArtificialSynthDevice implements NotePlayer {
 	Player player = new Player();
 
 	@Override
-	public void playNote(String note) {
-		Pattern p1 = new Pattern("V0 I[Piano] C");
+	public void playNote(Note note) {
+		Pattern p1 = new Pattern("V0 I[Piano] " + note.toString());
 		player.play(p1);
 	}
-
 
 	@Override
 	public String toString() {

@@ -6,7 +6,7 @@ public class Achivement implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public Achivement() {
+	public Achivement(String achievementName) {
 		
 	}
 
