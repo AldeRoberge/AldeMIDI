@@ -20,7 +20,7 @@ import javax.swing.SwingConstants;
 
 import alde.commons.util.window.UtilityJFrame;
 
-public class TestKeyboard {
+public class TestKeyboardInput {
 
 	private UtilityJFrame frmTestingInputOn;
 	private JTextArea debugInputTextArea;
@@ -34,7 +34,7 @@ public class TestKeyboard {
 	/**
 	 * Create the application.
 	 */
-	public TestKeyboard(Device d) {
+	public TestKeyboardInput(Device d) {
 
 		d.open();
 
@@ -50,7 +50,6 @@ public class TestKeyboard {
 
 					if (showDebugInfo) {
 						debugInputTextArea.append("Received message : '" + t.getStatus() + "'\n");
-
 					}
 
 					if (!hasReceivedInfo) {

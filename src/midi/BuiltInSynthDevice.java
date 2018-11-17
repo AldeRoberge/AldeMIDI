@@ -5,16 +5,20 @@ import org.jfugue.player.Player;
 
 import midi.note.Note;
 
-public class ArtificialSynthDevice implements NotePlayer {
+/**
+ * Artificial Synth Device is a device that plays notes using the computer to create sounds.
+ *
+ */
+public class BuiltInSynthDevice implements NotePlayer {
 
-	static ArtificialSynthDevice instance;
+	static BuiltInSynthDevice instance;
 
-	private ArtificialSynthDevice() {
+	private BuiltInSynthDevice() {
 	}
 
-	public static ArtificialSynthDevice get() {
+	public static BuiltInSynthDevice get() {
 		if (instance == null) {
-			instance = new ArtificialSynthDevice();
+			instance = new BuiltInSynthDevice();
 		}
 
 		return instance;

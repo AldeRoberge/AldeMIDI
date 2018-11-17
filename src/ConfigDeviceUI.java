@@ -21,12 +21,11 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import alde.commons.util.window.UtilityJFrame;
-import midi.ArtificialSynthDevice;
+import midi.BuiltInSynthDevice;
 import midi.Device;
 import midi.NotePlayer;
-import midi.TestKeyboard;
+import midi.TestKeyboardInput;
 import midi.note.Note;
-import midi.note.Octave;
 import util.GetResource;
 
 public class ConfigDeviceUI {
@@ -37,6 +36,7 @@ public class ConfigDeviceUI {
 
 	private Device performDevice;
 	private NotePlayer audioDevice;
+	private JComboBox<NotePlayer> soundDeviceSelector;
 
 	/**
 	 * Create the application.
@@ -65,7 +65,7 @@ public class ConfigDeviceUI {
 
 				if (deviceIsASynth) {
 					message = "If your synth does not correctly receive input, \n" + "make sure it is turned on and plugged in to the computer via MIDI.\n"
-							+ "Try turning it on and off again.\n\n If everything fails, use the built-in synth '" + ArtificialSynthDevice.get() + "'.";
+							+ "Try turning it on and off again.\n\n If everything fails, use the built-in synth '" + BuiltInSynthDevice.get() + "'.";
 				} else {
 					message = "Perfect Pitch has a built in Synthetiser. To hear it, your computer must have speakers or headphones plugged in.";
 				}
@@ -112,24 +112,23 @@ public class ConfigDeviceUI {
 			}
 		});
 
-		JComboBox<NotePlayer> soundDeviceSelector = new JComboBox<NotePlayer>();
+		soundDeviceSelector = new JComboBox<NotePlayer>();
 		soundDeviceSelector.setBounds(178, 76, 168, 28);
 		optionsPanel.add(soundDeviceSelector);
 
-		soundDeviceSelector.addItem(ArtificialSynthDevice.get());
+		soundDeviceSelector.addItem(BuiltInSynthDevice.get());
 
 		soundDeviceSelector.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 
-				NotePlayer notePlayer = (NotePlayer) soundDeviceSelector.getSelectedItem();
-				System.out.println("Output (sound) selected : '" + notePlayer + "'.");
-				audioDevice = notePlayer;
+				updateSelectedSoundDevice();
 
 			}
+
 		});
 
-		audioDevice = ArtificialSynthDevice.get();
+		audioDevice = BuiltInSynthDevice.get();
 
 		JLabel performLabel = new JLabel("Perform on this device : ");
 		performLabel.setBounds(50, 18, 143, 14);
@@ -159,6 +158,8 @@ public class ConfigDeviceUI {
 					soundLabel.setVisible(true);
 					soundDeviceSelector.setVisible(true);
 
+					updateSelectedSoundDevice();
+
 				}
 			}
 
@@ -175,12 +176,14 @@ public class ConfigDeviceUI {
 
 				if (audioDevice != null) {
 
-					System.out.println("Playing midi.note 'C5' on '" + audioDevice + "'.");
-
-					//audioDevice.playNote(Note.C.getMidi(Octave.Five));
+					Note debugNote = Note.C;
+					System.out.println("Playing note '" + debugNote + "' on '" + audioDevice + "'.");
+					audioDevice.playNote(debugNote);
 
 				} else {
+
 					System.err.println("Audio device is null!");
+
 				}
 
 			}
@@ -195,7 +198,7 @@ public class ConfigDeviceUI {
 		btnTestInput.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				TestKeyboard t = new TestKeyboard(performDevice);
+				TestKeyboardInput t = new TestKeyboardInput(performDevice);
 
 			}
 		});
@@ -209,6 +212,12 @@ public class ConfigDeviceUI {
 
 		frame.setVisible(true);
 
+	}
+
+	private void updateSelectedSoundDevice() {
+		NotePlayer notePlayer = (NotePlayer) soundDeviceSelector.getSelectedItem();
+		System.out.println("Output (sound) selected : '" + notePlayer + "'.");
+		audioDevice = notePlayer;
 	}
 
 	public static List<Device> findMidiDevices() {

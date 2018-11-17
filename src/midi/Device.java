@@ -104,6 +104,8 @@ public class Device implements NotePlayer {
 
 	public void playNote(int noteCode, int velocity) {
 
+		System.out.println("Playing note " + noteCode);
+
 		if (!isOpened) {
 			open();
 		}
@@ -119,7 +121,6 @@ public class Device implements NotePlayer {
 				e.printStackTrace();
 			}
 		}
-
 	}
 
 	@Override

@@ -6,17 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0ade708-aad1-4661-a360-1a70b00d1967" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/AldeMIDI.iml" />
       <change beforePath="$USER_HOME$/Documents/GitHub/AldeCommons/AldeCommons.iml" afterPath="$USER_HOME$/Documents/GitHub/AldeCommons/AldeCommons.iml" />
       <change beforePath="$PROJECT_DIR$/src/ConfigDeviceUI.java" afterPath="$PROJECT_DIR$/src/ConfigDeviceUI.java" />
-      <change beforePath="$PROJECT_DIR$/src/achievement/Achivement.java" afterPath="$PROJECT_DIR$/src/achievement/Achivement.java" />
-      <change beforePath="$PROJECT_DIR$/src/midi/ArtificialSynthDevice.java" afterPath="$PROJECT_DIR$/src/midi/ArtificialSynthDevice.java" />
+      <change beforePath="$PROJECT_DIR$/src/midi/ArtificialSynthDevice.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/midi/Device.java" afterPath="$PROJECT_DIR$/src/midi/Device.java" />
-      <change beforePath="$PROJECT_DIR$/src/midi/NotePlayer.java" afterPath="$PROJECT_DIR$/src/midi/NotePlayer.java" />
-      <change beforePath="$PROJECT_DIR$/src/ui/player/PlayerInfoWindow.java" afterPath="$PROJECT_DIR$/src/ui/player/PlayerInfoWindow.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,23 +39,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArtificialSynthDevice.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/midi/ArtificialSynthDevice.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="25" column="36" lean-forward="false" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Device.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/midi/Device.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="125" column="37" lean-forward="false" selection-start-line="125" selection-start-column="37" selection-end-line="125" selection-end-column="37" />
+            <state relative-caret-position="242">
+              <caret line="106" column="24" lean-forward="true" selection-start-line="106" selection-start-column="24" selection-end-line="106" selection-end-column="24" />
               <folding>
-                <element signature="e#2658#2659#0" expanded="true" />
+                <element signature="e#2622#2623#0" expanded="true" />
+                <element signature="e#2657#2658#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/src/midi/note/Octave.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-72">
-              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -104,7 +88,7 @@
         <entry file="file://$PROJECT_DIR$/src/ConfigDeviceUI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
-              <caret line="178" column="0" lean-forward="false" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+              <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -379,12 +363,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1542473631305</updated>
-      <workItem from="1542473634257" duration="4929000" />
+      <workItem from="1542473634257" duration="5203000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4929000" />
+    <option name="totallyTimeSpent" value="5203000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -488,7 +472,7 @@
     <entry file="file://$PROJECT_DIR$/src/ConfigDeviceUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
-          <caret line="178" column="0" lean-forward="false" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+          <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -504,7 +488,7 @@
     <entry file="file://$PROJECT_DIR$/src/midi/note/Octave.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-72">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -535,10 +519,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/midi/Device.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="125" column="37" lean-forward="false" selection-start-line="125" selection-start-column="37" selection-end-line="125" selection-end-column="37" />
+        <state relative-caret-position="242">
+          <caret line="106" column="24" lean-forward="true" selection-start-line="106" selection-start-column="24" selection-end-line="106" selection-end-column="24" />
           <folding>
-            <element signature="e#2658#2659#0" expanded="true" />
+            <element signature="e#2622#2623#0" expanded="true" />
+            <element signature="e#2657#2658#0" expanded="true" />
           </folding>
         </state>
       </provider>
