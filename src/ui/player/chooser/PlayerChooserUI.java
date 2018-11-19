@@ -1,3 +1,4 @@
+package ui.player.chooser;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,9 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import alde.commons.util.window.UtilityJFrame;
-import ui.player.chooser.ChooseExistingOrNewPlayerPanel;
-import ui.player.chooser.CreateNewPlayerPanel;
-import ui.player.chooser.SelectExistingPlayerPanel;
+import ui.player.chooser.panels.ChooseExistingOrNewPlayerPanel;
+import ui.player.chooser.panels.CreateNewPlayerPanel;
+import ui.player.chooser.panels.SelectExistingPlayerPanel;
 import user.Player;
 import util.GetResource;
 
@@ -45,7 +46,7 @@ public class PlayerChooserUI {
 	public PlayerChooserUI(Consumer<Player> callback) {
 		frame = new UtilityJFrame();
 		frame.setTitle("Player Selection");
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 500, 180);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setIconImage(GetResource.getSoftwareIcon());
 

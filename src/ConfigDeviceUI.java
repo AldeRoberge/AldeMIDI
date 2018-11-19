@@ -12,6 +12,7 @@ import java.util.function.BiConsumer;
 import javax.sound.midi.MidiDevice.Info;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -27,6 +28,7 @@ import midi.NotePlayer;
 import midi.TestKeyboardInput;
 import midi.note.Note;
 import util.GetResource;
+import java.awt.FlowLayout;
 
 public class ConfigDeviceUI {
 
@@ -37,65 +39,34 @@ public class ConfigDeviceUI {
 	private Device performDevice;
 	private NotePlayer audioDevice;
 	private JComboBox<NotePlayer> soundDeviceSelector;
+	private JComboBox<Device> performDeviceSelector;
+	private JPanel outputDevicePanel;
 
 	/**
 	 * Create the application.
 	 */
 	public ConfigDeviceUI(BiConsumer<Device, NotePlayer> callBack) {
 		frame = new UtilityJFrame();
-		frame.setResizable(false);
 		frame.setTitle("Configuration");
-		frame.setBounds(100, 100, 530, 210);
+		frame.setBounds(100, 100, 520, 200);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setIconImage(GetResource.getSoftwareIcon());
 
-		JPanel panel = new JPanel();
-		panel.setLayout(new BorderLayout(0, 0));
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		audioDevice = BuiltInSynthDevice.get();
 
-		JPanel nextPanel = new JPanel();
-		panel.add(nextPanel, BorderLayout.SOUTH);
+		JPanel mainpanel = new JPanel();
+		frame.getContentPane().add(mainpanel, BorderLayout.CENTER);
+		mainpanel.setLayout(new BoxLayout(mainpanel, BoxLayout.Y_AXIS));
 
-		JButton btnHelp = new JButton("Help");
-		btnHelp.setFont(new Font("Segoe UI Light", Font.PLAIN, 15));
-		nextPanel.add(btnHelp);
-		btnHelp.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String message;
+		JPanel perfomDevicePanel = new JPanel();
+		mainpanel.add(perfomDevicePanel);
 
-				if (deviceIsASynth) {
-					message = "If your synth does not correctly receive input, \n" + "make sure it is turned on and plugged in to the computer via MIDI.\n"
-							+ "Try turning it on and off again.\n\n If everything fails, use the built-in synth '" + BuiltInSynthDevice.get() + "'.";
-				} else {
-					message = "Perfect Pitch has a built in Synthetiser. To hear it, your computer must have speakers or headphones plugged in.";
-				}
-				showMessage(message);
-			}
-		});
-		btnHelp.setBackground(Color.RED);
+		JLabel performLabel = new JLabel("Input from this device : ");
+		perfomDevicePanel.add(performLabel);
 
-		JButton btnNext = new JButton("Next");
-		btnNext.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-		nextPanel.add(btnNext);
-		btnNext.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				showMessage("Awesome! Let's do it.");
-				callBack.accept(performDevice, audioDevice);
-				frame.dispose();
-			}
-		});
-		btnNext.setBackground(Color.GREEN);
-		btnNext.setForeground(Color.BLACK);
-
-		JPanel optionsPanel = new JPanel();
-		panel.add(optionsPanel, BorderLayout.CENTER);
-		optionsPanel.setLayout(null);
-
-		JLabel soundLabel = new JLabel("Output to this device : ");
-		soundLabel.setBounds(50, 83, 143, 14);
-		optionsPanel.add(soundLabel);
-
-		JComboBox<Device> performDeviceSelector = new JComboBox<Device>();
+		performDeviceSelector = new JComboBox<Device>();
+		performDeviceSelector.setForeground(Color.BLACK);
+		perfomDevicePanel.add(performDeviceSelector);
 
 		for (Device d : findMidiDevices()) {
 			performDeviceSelector.addItem(d);
@@ -112,9 +83,41 @@ public class ConfigDeviceUI {
 			}
 		});
 
+		JPanel deviceAlsoProducesSoundPanel = new JPanel();
+		mainpanel.add(deviceAlsoProducesSoundPanel);
+
+		JRadioButton btnDeviceIsASynth = new JRadioButton("This device also produces sound");
+		deviceAlsoProducesSoundPanel.add(btnDeviceIsASynth);
+
+		btnDeviceIsASynth.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (btnDeviceIsASynth.isSelected()) {
+					deviceIsASynth = true;
+					outputDevicePanel.setVisible(false);
+					audioDevice = performDevice;
+				} else {
+					deviceIsASynth = false;
+					outputDevicePanel.setVisible(true);
+					updateSelectedSoundDevice();
+
+				}
+			}
+
+		});
+
+		btnDeviceIsASynth.setToolTipText("Select this if your device is a synthesiser.");
+
+		outputDevicePanel = new JPanel();
+		mainpanel.add(outputDevicePanel);
+
+		JLabel soundLabel = new JLabel("Output to this device : ");
+		outputDevicePanel.add(soundLabel);
+
 		soundDeviceSelector = new JComboBox<NotePlayer>();
-		soundDeviceSelector.setBounds(178, 76, 168, 28);
-		optionsPanel.add(soundDeviceSelector);
+		soundDeviceSelector.setForeground(Color.BLACK);
+		outputDevicePanel.add(soundDeviceSelector);
 
 		soundDeviceSelector.addItem(BuiltInSynthDevice.get());
 
@@ -128,48 +131,20 @@ public class ConfigDeviceUI {
 
 		});
 
-		audioDevice = BuiltInSynthDevice.get();
+		JPanel panel_2 = new JPanel();
+		mainpanel.add(panel_2);
 
-		JLabel performLabel = new JLabel("Perform on this device : ");
-		performLabel.setBounds(50, 18, 143, 14);
-		optionsPanel.add(performLabel);
-
-		performDeviceSelector.setBounds(178, 11, 168, 28);
-		optionsPanel.add(performDeviceSelector);
-
-		JRadioButton rdbtnDeviceIsASynth = new JRadioButton("This device also produces sound");
-
-		rdbtnDeviceIsASynth.addActionListener(new ActionListener() {
-
-			@Override
+		JButton btnTestInput = new JButton("Test input");
+		panel_2.add(btnTestInput);
+		btnTestInput.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+		btnTestInput.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (rdbtnDeviceIsASynth.isSelected()) {
-
-					deviceIsASynth = true;
-
-					soundLabel.setVisible(false);
-					soundDeviceSelector.setVisible(false);
-
-					audioDevice = performDevice;
-				} else {
-
-					deviceIsASynth = false;
-
-					soundLabel.setVisible(true);
-					soundDeviceSelector.setVisible(true);
-
-					updateSelectedSoundDevice();
-
-				}
+				new TestKeyboardInput(performDevice);
 			}
-
 		});
 
-		rdbtnDeviceIsASynth.setToolTipText("Select this if your device is a synthesiser.");
-		rdbtnDeviceIsASynth.setBounds(104, 46, 191, 23);
-		optionsPanel.add(rdbtnDeviceIsASynth);
-
-		JButton btnTestAudio = new JButton("Test audio");
+		JButton btnTestAudio = new JButton("Test output");
+		panel_2.add(btnTestAudio);
 		btnTestAudio.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		btnTestAudio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -189,22 +164,38 @@ public class ConfigDeviceUI {
 			}
 		});
 
-		btnTestAudio.setBackground(Color.BLUE);
-		btnTestAudio.setBounds(356, 76, 124, 28);
-		optionsPanel.add(btnTestAudio);
+		JPanel buttonPanel = new JPanel();
+		mainpanel.add(buttonPanel);
 
-		JButton btnTestInput = new JButton("Test input");
-		btnTestInput.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		btnTestInput.addActionListener(new ActionListener() {
+		JButton btnHelp = new JButton("Help");
+		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				TestKeyboardInput t = new TestKeyboardInput(performDevice);
+				String message;
+
+				if (deviceIsASynth) {
+					message = "If your synth does not correctly receive input, \n" + "make sure it is turned on and plugged in to the computer via MIDI.\n"
+							+ "Try turning it on and off again.\n\n If everything fails, use the built-in synth '" + BuiltInSynthDevice.get() + "'.";
+				} else {
+					message = "Perfect Pitch has a built in Synthetiser. To hear it, your computer must have speakers or headphones plugged in.";
+				}
+
+				showMessage(message);
 
 			}
 		});
-		btnTestInput.setBackground(Color.BLUE);
-		btnTestInput.setBounds(356, 11, 124, 28);
-		optionsPanel.add(btnTestInput);
+		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		buttonPanel.add(btnHelp);
+
+		btnTestInput = new JButton("Next");
+		btnTestInput.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				showMessage("Awesome! Let's do it.");
+				callBack.accept(performDevice, audioDevice);
+				frame.dispose();
+			}
+		});
+		buttonPanel.add(btnTestInput);
 
 		for (NotePlayer d : findMidiDevices()) {
 			soundDeviceSelector.addItem(d);

@@ -1,4 +1,4 @@
-package ui.player.chooser;
+package ui.player.chooser.panels;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -23,7 +23,7 @@ public class CreateNewPlayerPanel extends JPanel {
 	private JTextField nameInputField;
 	private JLabel errorLabel;
 
-	private JButton btnOkay;
+	private JButton btnCreate;
 
 	/**
 	 * Create the panel.
@@ -43,15 +43,16 @@ public class CreateNewPlayerPanel extends JPanel {
 		errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		errorLabel.setForeground(Color.RED);
 		panel.add(errorLabel, BorderLayout.SOUTH);
-		setError("");
 
 		JPanel namePanel = new JPanel();
 		panel.add(namePanel, BorderLayout.CENTER);
 
 		JLabel nameInputLabel = new JLabel("Enter your name : ");
+		nameInputLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		namePanel.add(nameInputLabel);
 
 		nameInputField = new JTextField();
+		nameInputField.setHorizontalAlignment(SwingConstants.CENTER);
 		namePanel.add(nameInputField);
 		nameInputField.setColumns(15);
 
@@ -74,13 +75,13 @@ public class CreateNewPlayerPanel extends JPanel {
 
 				if (name.length() == 0) {
 					setError("");
-					btnOkay.setEnabled(false);
+					btnCreate.setEnabled(false);
 				} else if (!name.matches("^[a-zA-Z0-9]+$")) {
 					setError("Only letters and numbers allowed.");
-					btnOkay.setEnabled(false);
+					btnCreate.setEnabled(false);
 				} else {
 					setError("");
-					btnOkay.setEnabled(true);
+					btnCreate.setEnabled(true);
 				}
 
 			}
@@ -90,8 +91,8 @@ public class CreateNewPlayerPanel extends JPanel {
 		add(acceptPanel);
 		acceptPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		btnOkay = new JButton("Next");
-		btnOkay.addActionListener(new ActionListener() {
+		btnCreate = new JButton("Create");
+		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				String playerName = nameInputField.getText();
@@ -120,10 +121,11 @@ public class CreateNewPlayerPanel extends JPanel {
 			}
 		});
 		acceptPanel.add(btnCancel);
-		acceptPanel.add(btnOkay);
+		acceptPanel.add(btnCreate);
 
-		btnOkay.setEnabled(false);
+		btnCreate.setEnabled(false);
 
+		setError("");
 		setVisible(true);
 
 	}
@@ -131,9 +133,11 @@ public class CreateNewPlayerPanel extends JPanel {
 	private void setError(String error) {
 		if (error.equals("")) {
 			errorLabel.setVisible(false);
+			btnCreate.setEnabled(true);
 		} else {
 			errorLabel.setVisible(true);
 			errorLabel.setText(error);
+			btnCreate.setEnabled(false);
 		}
 	}
 

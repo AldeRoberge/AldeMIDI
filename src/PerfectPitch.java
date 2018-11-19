@@ -12,6 +12,7 @@ import alde.commons.util.SplashScreen;
 import midi.Device;
 import midi.NotePlayer;
 import properties.Properties;
+import ui.player.chooser.PlayerChooserUI;
 import user.Player;
 import util.GetResource;
 
@@ -58,7 +59,6 @@ public class PerfectPitch {
 			public void accept(Device t, NotePlayer u) {
 				performDevice = t;
 				audioDevice = u;
-
 				loadPlayerChooserUI();
 			}
 		});

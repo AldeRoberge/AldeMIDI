@@ -31,16 +31,26 @@ public class Device implements NotePlayer {
 		this.midiDevice = midiDevice;
 	}
 
-	List<Consumer<ShortMessage>> listeners = new ArrayList<>();
+	List<Consumer<Note>> listeners = new ArrayList<>();
 
-	public void addListener(Consumer<ShortMessage> consumer) {
+	public void addListener(Consumer<Note> consumer) {
 		listeners.add(consumer);
 	}
 
 	private void receivedMessage(MidiMessage message, long timeStamp) {
-		for (Consumer<ShortMessage> listener : listeners) {
-			listener.accept((ShortMessage) message);
+
+		ShortMessage s = (ShortMessage) message;
+
+		if (s.getStatus() == 147) {
+
+			Note c = Note.fromMidi(s.getData1());
+
+			for (Consumer<Note> listener : listeners) {
+				listener.accept(c);
+			}
+
 		}
+
 	}
 
 	public void open() {

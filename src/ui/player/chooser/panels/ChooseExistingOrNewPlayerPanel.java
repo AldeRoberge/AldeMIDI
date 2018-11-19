@@ -1,4 +1,4 @@
-package ui.player.chooser;
+package ui.player.chooser.panels;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;

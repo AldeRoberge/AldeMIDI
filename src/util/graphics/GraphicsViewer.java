@@ -1,16 +1,13 @@
-package util;
+package util.graphics;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.Polygon;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -18,9 +15,6 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 public class GraphicsViewer extends JComponent {
-
-	public Color backgroundColor = Color.BLACK;
-	public Color color = Color.BLUE;
 
 	private static final long serialVersionUID = 1L;
 
@@ -76,10 +70,10 @@ public class GraphicsViewer extends JComponent {
 
 		System.out.println("Size : Width : " + width + ", Height " + height);
 
-		g.setColor(backgroundColor);
+		g.setColor(Color.GRAY);
 		g.fillRect(0, 0, width, height); //Draw background
 
-		g.setColor(color);
+		g.setColor(Color.DARK_GRAY);
 
 		for (int x = 0; x < width; x++) {
 			if ((x % 10 == 0)) {

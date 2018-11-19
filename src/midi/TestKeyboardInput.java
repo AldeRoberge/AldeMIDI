@@ -7,18 +7,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.function.Consumer;
 
-import javax.sound.midi.ShortMessage;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 import alde.commons.util.window.UtilityJFrame;
+import midi.note.Note;
 
 public class TestKeyboardInput {
 
@@ -41,28 +42,32 @@ public class TestKeyboardInput {
 		initialize(d);
 		frmTestingInputOn.setVisible(true);
 
-		d.addListener(new Consumer<ShortMessage>() {
-
+		d.addListener(new Consumer<Note>() {
 			@Override
-			public void accept(ShortMessage t) {
+			public void accept(Note note) {
 
-				if (t.getStatus() != 248) { //Avoid spamming (248 is tick)
+				if (showDebugInfo) {
 
-					if (showDebugInfo) {
-						debugInputTextArea.append("Received message : '" + t.getStatus() + "'\n");
-					}
+					printToDebug("Received note : '" + note + "'\n");
 
-					if (!hasReceivedInfo) {
-						hasReceivedInfo = true;
-						btnItWorks.setVisible(true);
-					}
+				}
 
+				if (!hasReceivedInfo) {
+					hasReceivedInfo = true;
+					btnItWorks.setVisible(true);
 				}
 
 			}
 
 		});
 
+	}
+
+	private void printToDebug(String string) {
+		debugInputTextArea.append(string);
+
+		JScrollBar vertical = scrollPane.getVerticalScrollBar();
+		vertical.setValue(vertical.getMaximum());
 	}
 
 	/**
@@ -103,6 +108,7 @@ public class TestKeyboardInput {
 		panel.add(scrollPane, BorderLayout.CENTER);
 
 		debugInputTextArea = new JTextArea();
+		debugInputTextArea.setAutoscrolls(true);
 		debugInputTextArea.setLineWrap(true);
 		debugInputTextArea.setEditable(false);
 		scrollPane.setViewportView(debugInputTextArea);
