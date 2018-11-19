@@ -29,6 +29,8 @@ import midi.TestKeyboardInput;
 import midi.note.Note;
 import util.GetResource;
 import java.awt.FlowLayout;
+import java.awt.Component;
+import javax.swing.Box;
 
 public class ConfigDeviceUI {
 
@@ -38,17 +40,19 @@ public class ConfigDeviceUI {
 
 	private Device performDevice;
 	private NotePlayer audioDevice;
+
 	private JComboBox<NotePlayer> soundDeviceSelector;
 	private JComboBox<Device> performDeviceSelector;
-	private JPanel outputDevicePanel;
+	private JPanel selectOutputDevice;
 
 	/**
 	 * Create the application.
 	 */
 	public ConfigDeviceUI(BiConsumer<Device, NotePlayer> callBack) {
 		frame = new UtilityJFrame();
+		frame.setResizable(false);
 		frame.setTitle("Configuration");
-		frame.setBounds(100, 100, 520, 200);
+		frame.setBounds(100, 100, 520, 185);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setIconImage(GetResource.getSoftwareIcon());
 
@@ -67,6 +71,18 @@ public class ConfigDeviceUI {
 		performDeviceSelector = new JComboBox<Device>();
 		performDeviceSelector.setForeground(Color.BLACK);
 		perfomDevicePanel.add(performDeviceSelector);
+		
+		Component horizontalStrut = Box.createHorizontalStrut(0);
+		perfomDevicePanel.add(horizontalStrut);
+
+		JButton btnTestInput = new JButton("  Test input  ");
+		perfomDevicePanel.add(btnTestInput);
+		btnTestInput.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+		btnTestInput.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new TestKeyboardInput(performDevice);
+			}
+		});
 
 		for (Device d : findMidiDevices()) {
 			performDeviceSelector.addItem(d);
@@ -95,29 +111,30 @@ public class ConfigDeviceUI {
 			public void actionPerformed(ActionEvent e) {
 				if (btnDeviceIsASynth.isSelected()) {
 					deviceIsASynth = true;
-					outputDevicePanel.setVisible(false);
+					selectOutputDevice.setVisible(false);
 					audioDevice = performDevice;
 				} else {
 					deviceIsASynth = false;
-					outputDevicePanel.setVisible(true);
+					selectOutputDevice.setVisible(true);
 					updateSelectedSoundDevice();
-
 				}
 			}
-
 		});
 
 		btnDeviceIsASynth.setToolTipText("Select this if your device is a synthesiser.");
 
-		outputDevicePanel = new JPanel();
+		JPanel outputDevicePanel = new JPanel();
 		mainpanel.add(outputDevicePanel);
 
+		selectOutputDevice = new JPanel();
+		outputDevicePanel.add(selectOutputDevice);
+
 		JLabel soundLabel = new JLabel("Output to this device : ");
-		outputDevicePanel.add(soundLabel);
+		selectOutputDevice.add(soundLabel);
 
 		soundDeviceSelector = new JComboBox<NotePlayer>();
+		selectOutputDevice.add(soundDeviceSelector);
 		soundDeviceSelector.setForeground(Color.BLACK);
-		outputDevicePanel.add(soundDeviceSelector);
 
 		soundDeviceSelector.addItem(BuiltInSynthDevice.get());
 
@@ -131,20 +148,8 @@ public class ConfigDeviceUI {
 
 		});
 
-		JPanel panel_2 = new JPanel();
-		mainpanel.add(panel_2);
-
-		JButton btnTestInput = new JButton("Test input");
-		panel_2.add(btnTestInput);
-		btnTestInput.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		btnTestInput.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new TestKeyboardInput(performDevice);
-			}
-		});
-
 		JButton btnTestAudio = new JButton("Test output");
-		panel_2.add(btnTestAudio);
+		outputDevicePanel.add(btnTestAudio);
 		btnTestAudio.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		btnTestAudio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
