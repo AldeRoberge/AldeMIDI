@@ -1,4 +1,4 @@
-package perfectpitch.player.chooser.panels;
+package perfectpitch.player.ui.chooser.panels;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;

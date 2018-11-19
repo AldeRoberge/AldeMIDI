@@ -2,7 +2,7 @@ package midi;
 
 import javax.sound.midi.ShortMessage;
 
-public class MIDIMessageConsumer {
+class MIDIMessageConsumer {
 
 	
 	public void receiveEvent(ShortMessage s) {

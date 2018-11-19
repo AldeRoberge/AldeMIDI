@@ -1,4 +1,4 @@
-package perfectpitch.user.serialization;
+package perfectpitch.player.user.serialization;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import javax.imageio.ImageIO;
  *
  */
 public class SerializableBufferedImage implements Serializable {
-	public transient BufferedImage bufferedImage;
+	private transient BufferedImage bufferedImage;
 
 	public SerializableBufferedImage(BufferedImage image) {
 		this.bufferedImage = image;

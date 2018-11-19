@@ -1,22 +1,21 @@
-package perfectpitch.player.chooser;
+package perfectpitch.player.ui.chooser;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.util.function.Consumer;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import alde.commons.util.window.UtilityJFrame;
-import perfectpitch.player.chooser.panels.ChooseExistingOrNewPlayerPanel;
-import perfectpitch.player.chooser.panels.CreateNewPlayerPanel;
-import perfectpitch.player.chooser.panels.SelectExistingPlayerPanel;
-import perfectpitch.user.Player;
+import perfectpitch.player.ui.chooser.panels.ChooseExistingOrNewPlayerPanel;
+import perfectpitch.player.ui.chooser.panels.CreateNewPlayerPanel;
+import perfectpitch.player.ui.chooser.panels.SelectExistingPlayerPanel;
+import perfectpitch.player.user.Player;
 import perfectpitch.util.GetResource;
 
 public class PlayerChooserUI {
 
-	JPanel existingOrReturning;
+	private JPanel existingOrReturning;
 
 	private UtilityJFrame frame;
 
@@ -47,7 +46,7 @@ public class PlayerChooserUI {
 		frame = new UtilityJFrame();
 		frame.setTitle("Player Selection");
 		frame.setBounds(100, 100, 500, 180);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setIconImage(GetResource.getSoftwareIcon());
 
 		existingOrReturning = new ChooseExistingOrNewPlayerPanel(new Consumer<Boolean>() {
@@ -84,7 +83,6 @@ public class PlayerChooserUI {
 						public void run() {
 							setMainMenu();
 						}
-
 					});
 
 					setView(createNewPlayerPanel);

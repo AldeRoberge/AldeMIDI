@@ -14,11 +14,12 @@ import alde.commons.util.SplashScreen;
 import midi.device.NotePlayer;
 import midi.device.impl.Device;
 import perfectpitch.properties.Properties;
-import perfectpitch.player.chooser.PlayerChooserUI;
-import perfectpitch.user.Player;
+import perfectpitch.player.ui.PlayerInfoWindow;
+import perfectpitch.player.ui.chooser.PlayerChooserUI;
+import perfectpitch.player.user.Player;
 import perfectpitch.util.GetResource;
 
-public class PerfectPitch {
+class PerfectPitch {
 
 	ConfigDeviceUI configDevice;
 
@@ -42,7 +43,7 @@ public class PerfectPitch {
 		});
 	}
 
-	public PerfectPitch() {
+	private PerfectPitch() {
 		setLookAndFeel();
 
 		showSplashScreen(new Runnable() {
@@ -71,6 +72,19 @@ public class PerfectPitch {
 				player = p;
 
 				System.out.println("Received player!");
+
+				Runnable r = new Runnable() {
+					@Override
+					public void run() {
+						System.out.println("Run game.");
+					}
+				};
+
+				if (!p.isConfigured()) {
+					new PlayerInfoWindow(p, r, true);
+				} else {
+					r.run();
+				}
 
 			}
 		});

@@ -14,14 +14,7 @@ import java.util.function.BiConsumer;
 import javax.sound.midi.MidiDevice.Info;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javax.swing.*;
 
 import alde.commons.util.window.UtilityJFrame;
 import midi.device.NotePlayer;
@@ -32,11 +25,10 @@ import midi.protocol.Note;
 import perfectpitch.util.GetResource;
 import java.awt.FlowLayout;
 import java.awt.Component;
-import javax.swing.Box;
 
-public class ConfigDeviceUI {
+class ConfigDeviceUI {
 
-	UtilityJFrame frame;
+	private UtilityJFrame frame;
 
 	private boolean deviceIsASynth;
 
@@ -55,7 +47,7 @@ public class ConfigDeviceUI {
 		frame.setResizable(false);
 		frame.setTitle("Configuration");
 		frame.setBounds(100, 100, 520, 185);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setIconImage(GetResource.getSoftwareIcon());
 
 		audioDevice = BuiltInSynthDevice.get();
@@ -217,7 +209,7 @@ public class ConfigDeviceUI {
 		audioDevice = notePlayer;
 	}
 
-	public static List<Device> findMidiDevices() {
+	private static List<Device> findMidiDevices() {
 		List<Device> midiDevices = new ArrayList<Device>();
 
 		for (Info info : MidiSystem.getMidiDeviceInfo()) {

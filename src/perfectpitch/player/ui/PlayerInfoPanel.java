@@ -1,4 +1,4 @@
-package perfectpitch.player;
+package perfectpitch.player.ui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -7,13 +7,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import perfectpitch.user.Player;
+import perfectpitch.player.user.Player;
 
-public class PlayerDetailsPanel extends JPanel {
+public class PlayerInfoPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public PlayerDetailsPanel(Player player) {
+	public PlayerInfoPanel(Player player) {
 		setLayout(new BorderLayout(0, 0));
 
 		JPanel fileMainDetails = new JPanel(new BorderLayout(4, 2));

@@ -13,11 +13,11 @@ import java.util.TimerTask;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-public class GraphicsViewer extends JComponent {
+class GraphicsViewer extends JComponent {
 
 	private static final long serialVersionUID = 1L;
 
-	GraphicsViewer() {
+	private GraphicsViewer() {
 
 		setPreferredSize(new Dimension(500, 100));
 
@@ -57,8 +57,8 @@ public class GraphicsViewer extends JComponent {
 
 	}
 
-	int mouseX;
-	int mouseY;
+	private int mouseX;
+	private int mouseY;
 
 	@Override
 	public void paintComponent(Graphics g) {
@@ -104,7 +104,7 @@ public class GraphicsViewer extends JComponent {
 
 	}
 
-	public void createGUI() {
+	private void createGUI() {
 		final JFrame frame = new JFrame();
 		frame.add(new GraphicsViewer(), BorderLayout.CENTER);
 		frame.pack();

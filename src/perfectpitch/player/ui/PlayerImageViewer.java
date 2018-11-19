@@ -1,4 +1,4 @@
-package perfectpitch.player;
+package perfectpitch.player.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -27,28 +27,20 @@ import org.slf4j.LoggerFactory;
 
 import alde.commons.fileImporter.FileImporter;
 import alde.commons.util.file.extensions.ExtensionFilter;
-import alde.commons.util.window.UtilityJFrame;
-import perfectpitch.user.Player;
-import perfectpitch.user.Players;
+import perfectpitch.player.user.Player;
 
 public class PlayerImageViewer extends JPanel {
 
 	private static final long serialVersionUID = 2378457583L;
 
-	public static void main(String[] args) {
-		UtilityJFrame f = new UtilityJFrame();
-		f.add(new PlayerImageViewer(Players.getPlayers().get(0)), BorderLayout.CENTER);
-		f.setVisible(true);
-	}
-
 	private static Logger log = LoggerFactory.getLogger(PlayerImageViewer.class);
 
-	Player player;
+	private Player player;
 
 	JPanel editImagePanel;
 	private JPanel playerImagePanel;
 
-	public PlayerImageViewer(Player player) {
+	public PlayerImageViewer(Player player, boolean isEditable) {
 
 		this.player = player;
 		setLayout(new BorderLayout(0, 0));
@@ -70,6 +62,8 @@ public class PlayerImageViewer extends JPanel {
 		JPanel playerNamePanel = new JPanel();
 		panel.add(playerNamePanel, BorderLayout.SOUTH);
 		playerNamePanel.setLayout(new BorderLayout(0, 0));
+
+		System.out.println("Name : " + player.getName());
 
 		JLabel lblNewLabel = new JLabel(player.getName());
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -110,14 +104,14 @@ public class PlayerImageViewer extends JPanel {
 		popup.add(menuItem);
 
 		// New File menu item
-		menuItem = new JMenuItem("Edit image...", new ImageIcon("res/images/popup/perfectpitch.user.png"));
+		menuItem = new JMenuItem("Edit image...", new ImageIcon("res/images/popup/perfectpitch.player.user.png"));
 		menuItem.setMnemonic(KeyEvent.VK_F);
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new FileImporter(k -> {
 					try {
 						player.setImage(ImageIO.read(k.get(0)));
-						log.info("Set new perfectpitch.user image.");
+						log.info("Set new perfectpitch.player.user image.");
 						playerImage.setIcon(new ImageIcon(player.getImage()));
 					} catch (IOException e1) {
 						log.info("Could not read image.");
@@ -150,7 +144,7 @@ public class PlayerImageViewer extends JPanel {
 
 	}
 
-	public void setPlayerColor(Color color) {
+	private void setPlayerColor(Color color) {
 		player.setColor(color);
 		playerImagePanel.setBorder(new LineBorder(color, 3, true));
 	}

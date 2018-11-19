@@ -1,10 +1,10 @@
-package perfectpitch.user;
+package perfectpitch.player.user;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
-import perfectpitch.user.serialization.SerializableBufferedImage;
+import perfectpitch.player.user.serialization.SerializableBufferedImage;
 import perfectpitch.util.GetResource;
 import perfectpitch.util.ResizeBufferedImage;
 
@@ -17,6 +17,8 @@ public class Player implements Serializable {
 	private String name;
 
 	private SerializableBufferedImage image;
+
+	private boolean configured;
 
 	private Color color;
 
@@ -32,7 +34,6 @@ public class Player implements Serializable {
 	}
 
 	public void setImage(BufferedImage image) {
-
 		if (image.getHeight() > 100 || image.getWidth() > 100) {
 			int ratio = image.getWidth() / image.getHeight();
 			image = ResizeBufferedImage.resize(image, 200, 200 * ratio);
@@ -81,6 +82,10 @@ public class Player implements Serializable {
 
 	public int getLevel() {
 		return 10;
+	}
+
+	public boolean isConfigured() {
+		return this.configured;
 	}
 
 }

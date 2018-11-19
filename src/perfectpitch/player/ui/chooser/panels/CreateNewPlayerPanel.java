@@ -1,4 +1,4 @@
-package perfectpitch.player.chooser.panels;
+package perfectpitch.player.ui.chooser.panels;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -16,8 +16,8 @@ import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import perfectpitch.user.Player;
-import perfectpitch.user.Players;
+import perfectpitch.player.user.Player;
+import perfectpitch.player.user.Players;
 
 public class CreateNewPlayerPanel extends JPanel {
 	private JTextField nameInputField;
@@ -69,7 +69,7 @@ public class CreateNewPlayerPanel extends JPanel {
 				checkInputNameForValidity();
 			}
 
-			public void checkInputNameForValidity() {
+			void checkInputNameForValidity() {
 
 				String name = nameInputField.getText();
 

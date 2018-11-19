@@ -32,7 +32,7 @@ public class Device implements NotePlayer {
 		this.midiDevice = midiDevice;
 	}
 
-	List<Consumer<Note>> listeners = new ArrayList<>();
+	private List<Consumer<Note>> listeners = new ArrayList<>();
 
 	public void addListener(Consumer<Note> consumer) {
 		listeners.add(consumer);
@@ -113,7 +113,7 @@ public class Device implements NotePlayer {
 		return midiDevice.getDeviceInfo().getName();
 	}
 
-	public void playNote(int noteCode, int velocity) {
+	private void playNote(int noteCode, int velocity) {
 
 		System.out.println("Playing note " + noteCode);
 

@@ -1,4 +1,4 @@
-package perfectpitch.player;
+package perfectpitch.player.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,7 +12,7 @@ import javax.swing.event.ChangeListener;
 
 import alde.commons.util.window.UtilityJFrame;
 
-public class ColorChooser {
+class ColorChooser {
 
 	private JFrame frmColorChooser;
 

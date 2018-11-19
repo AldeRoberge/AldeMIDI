@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public abstract class Challenge {
+abstract class Challenge {
 
 	// If it's completed
-	boolean isCompleted = false;
+	private boolean isCompleted;
 
-	float timeStart;
+	private float timeStart;
 
 	// Time taken to complete
-	float timeEnd;
+	private float timeEnd;
 
 	// Experience points
 	int EXP;
@@ -25,13 +25,12 @@ public abstract class Challenge {
 			timeEnd = System.currentTimeMillis() - timeStart;
 			tellListeners();
 		}
-
 	}
 
 	/**
 	 * List of Consumers that accept the CompletedChallenge
 	 */
-	List<Consumer<Challenge>> completedChallengeListeners = new ArrayList<>();
+	private List<Consumer<Challenge>> completedChallengeListeners = new ArrayList<>();
 
 	/**
 	 * Add a consumer that accepts the CompletedChallenge when the Challenge is completed
@@ -41,7 +40,7 @@ public abstract class Challenge {
 		this.completedChallengeListeners.add(completedChallengeListener);
 	}
 
-	public void tellListeners() {
+	private void tellListeners() {
 		for (Consumer<Challenge> listener : completedChallengeListeners) {
 			listener.accept(this);
 		}

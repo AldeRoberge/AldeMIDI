@@ -12,7 +12,7 @@ import midi.protocol.Note;
  */
 public class BuiltInSynthDevice implements NotePlayer {
 
-	static BuiltInSynthDevice instance;
+	private static BuiltInSynthDevice instance;
 
 	private BuiltInSynthDevice() {
 	}
@@ -25,7 +25,7 @@ public class BuiltInSynthDevice implements NotePlayer {
 		return instance;
 	}
 
-	Player player = new Player();
+	private Player player = new Player();
 
 	@Override
 	public void playNote(Note note) {

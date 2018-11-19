@@ -24,9 +24,9 @@ public enum Note {
 
 	private static Logger log = LoggerFactory.getLogger(Note.class);
 
-	public String name;
-	public int rank;
-	public Octave octave;
+	private String name;
+	private int rank;
+	private Octave octave;
 
 	Note(String name, int rank) {
 		this.name = name;
@@ -34,12 +34,12 @@ public enum Note {
 		setOctave(Octave.Five);
 	}
 
-	public Note setOctave(int octave) {
+	private Note setOctave(int octave) {
 		setOctave(Octave.getOctave(octave));
 		return this;
 	}
 
-	public void setOctave(Octave octave) {
+	private void setOctave(Octave octave) {
 		this.octave = octave;
 	}
 
@@ -63,7 +63,7 @@ public enum Note {
 		//return Note.valueOf(rank).set
 	}
 
-	public static Note getNote(int rank) {
+	private static Note getNote(int rank) {
 		switch (rank) {
 			case 0:
 				return C;

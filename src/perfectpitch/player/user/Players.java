@@ -1,4 +1,4 @@
-package perfectpitch.user;
+package perfectpitch.player.user;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +13,7 @@ public class Players {
 
 	private static org.slf4j.Logger log = LoggerFactory.getLogger(Players.class);
 
-	public static final String PLAYERS_FOLDER_PATH = "players/";
+	private static final String PLAYERS_FOLDER_PATH = "players/";
 
 	List<Player> players = new ArrayList<>();
 
@@ -52,9 +52,9 @@ public class Players {
 
 	}
 
-	static List<ObjectSerializer<Player>> serializedPlayers = new ArrayList<>();
+	private static List<ObjectSerializer<Player>> serializedPlayers = new ArrayList<>();
 
-	public static Player loadFromFile(File file) {
+	private static Player loadFromFile(File file) {
 
 		if (file.exists() && !(file.length() == 0)) {
 			for (ObjectSerializer<Player> p : serializedPlayers) {

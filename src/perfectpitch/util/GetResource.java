@@ -13,7 +13,7 @@ public class GetResource {
 		return (BufferedImage) getImage(name);
 	}
 
-	public static Image getImage(String path) {
+	private static Image getImage(String path) {
 
 		String currentPath = null;
 		try {
