@@ -31,7 +31,6 @@ public class PerfectPitch {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -40,7 +39,6 @@ public class PerfectPitch {
 					e.printStackTrace();
 				}
 			}
-
 		});
 	}
 
@@ -68,7 +66,6 @@ public class PerfectPitch {
 
 	private void loadPlayerChooserUI() {
 		PlayerChooserUI p = new PlayerChooserUI(new Consumer<Player>() {
-
 			@Override
 			public void accept(Player p) {
 				player = p;
@@ -76,7 +73,6 @@ public class PerfectPitch {
 				System.out.println("Received player!");
 
 			}
-
 		});
 	}
 
