@@ -24,8 +24,11 @@ public class Player implements Serializable {
 
 	private int EXP;
 
-	public Player(String name) {
+	private String hashedPassword;
+
+	public Player(String name, String hashedPassword) {
 		this.name = name;
+		this.hashedPassword = hashedPassword;
 		save();
 	}
 
@@ -36,7 +39,7 @@ public class Player implements Serializable {
 	public void setImage(BufferedImage image) {
 		if (image.getHeight() > 100 || image.getWidth() > 100) {
 			int ratio = image.getWidth() / image.getHeight();
-			image = ResizeBufferedImage.resize(image, 200, 200 * ratio);
+			image = ResizeBufferedImage.resize(image, 100, 100 * ratio);
 		}
 
 		this.image = new SerializableBufferedImage(image);
@@ -86,6 +89,10 @@ public class Player implements Serializable {
 
 	public boolean isConfigured() {
 		return this.configured;
+	}
+
+	public String getHashedPassword() {
+		return hashedPassword;
 	}
 
 }

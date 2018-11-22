@@ -2,30 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0ade708-aad1-4661-a360-1a70b00d1967" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" afterPath="$PROJECT_DIR$/LICENSE" />
-      <change beforePath="$PROJECT_DIR$/src/midi/MIDIMessageConsumer.java" afterPath="$PROJECT_DIR$/src/midi/MIDIMessageConsumer.java" />
-      <change beforePath="$PROJECT_DIR$/src/midi/device/impl/BuiltInSynthDevice.java" afterPath="$PROJECT_DIR$/src/midi/device/impl/BuiltInSynthDevice.java" />
-      <change beforePath="$PROJECT_DIR$/src/midi/device/impl/Device.java" afterPath="$PROJECT_DIR$/src/midi/device/impl/Device.java" />
-      <change beforePath="$PROJECT_DIR$/src/midi/protocol/Note.java" afterPath="$PROJECT_DIR$/src/midi/protocol/Note.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/ConfigDeviceUI.java" afterPath="$PROJECT_DIR$/src/perfectpitch/ConfigDeviceUI.java" />
       <change beforePath="$PROJECT_DIR$/src/perfectpitch/PerfectPitch.java" afterPath="$PROJECT_DIR$/src/perfectpitch/PerfectPitch.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/achievement/Achievement.java" afterPath="$PROJECT_DIR$/src/perfectpitch/achievement/Achievement.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/challenge/Challenge.java" afterPath="$PROJECT_DIR$/src/perfectpitch/challenge/Challenge.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/challenge/ChallengeHandler.java" afterPath="$PROJECT_DIR$/src/perfectpitch/challenge/ChallengeHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/player/ColorChooser.java" afterPath="$PROJECT_DIR$/src/perfectpitch/player/ui/ColorChooser.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/player/PlayerDetailsPanel.java" afterPath="$PROJECT_DIR$/src/perfectpitch/player/ui/PlayerDetailsPanel.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/player/PlayerImageViewer.java" afterPath="$PROJECT_DIR$/src/perfectpitch/player/ui/PlayerImageViewer.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/player/PlayerInfoWindow.java" afterPath="$PROJECT_DIR$/src/perfectpitch/player/ui/PlayerInfoWindow.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/player/chooser/PlayerChooserUI.java" afterPath="$PROJECT_DIR$/src/perfectpitch/player/ui/chooser/PlayerChooserUI.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/player/chooser/panels/ChooseExistingOrNewPlayerPanel.java" afterPath="$PROJECT_DIR$/src/perfectpitch/player/ui/chooser/panels/ChooseExistingOrNewPlayerPanel.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/player/chooser/panels/CreateNewPlayerPanel.java" afterPath="$PROJECT_DIR$/src/perfectpitch/player/ui/chooser/panels/CreateNewPlayerPanel.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/player/chooser/panels/SelectExistingPlayerPanel.java" afterPath="$PROJECT_DIR$/src/perfectpitch/player/ui/chooser/panels/SelectExistingPlayerPanel.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/user/Player.java" afterPath="$PROJECT_DIR$/src/perfectpitch/player/user/Player.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/user/Players.java" afterPath="$PROJECT_DIR$/src/perfectpitch/player/user/Players.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/user/serialization/SerializableBufferedImage.java" afterPath="$PROJECT_DIR$/src/perfectpitch/player/user/serialization/SerializableBufferedImage.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/util/GetResource.java" afterPath="$PROJECT_DIR$/src/perfectpitch/util/GetResource.java" />
-      <change beforePath="$PROJECT_DIR$/src/perfectpitch/util/graphics/GraphicsViewer.java" afterPath="$PROJECT_DIR$/src/perfectpitch/util/graphics/GraphicsViewer.java" />
+      <change beforePath="$PROJECT_DIR$/src/perfectpitch/player/ui/PlayerImageViewer.java" afterPath="$PROJECT_DIR$/src/perfectpitch/player/ui/PlayerImageViewer.java" />
+      <change beforePath="$PROJECT_DIR$/src/perfectpitch/player/ui/PlayerInfoWindow.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/perfectpitch/player/ui/chooser/PlayerChooserUI.java" afterPath="$PROJECT_DIR$/src/perfectpitch/player/ui/chooser/PlayerChooserUI.java" />
+      <change beforePath="$PROJECT_DIR$/src/perfectpitch/player/ui/chooser/panels/SelectablePanel.java" afterPath="$PROJECT_DIR$/src/perfectpitch/player/ui/chooser/panels/SelectablePanel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,7 +17,18 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="PerfectPitch.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/perfectpitch/PerfectPitch.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="499">
+              <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -126,20 +118,6 @@
               <item name="AldeMIDI" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="perfectpitch" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AldeMIDI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AldeMIDI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="perfectpitch" type="462c0819:PsiDirectoryNode" />
-              <item name="achievement" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AldeMIDI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AldeMIDI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="perfectpitch" type="462c0819:PsiDirectoryNode" />
-              <item name="challenge" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -322,12 +300,12 @@
       <option name="presentableId" value="Default" />
       <updated>1542473631305</updated>
       <workItem from="1542473634257" duration="5799000" />
-      <workItem from="1542649439658" duration="5324000" />
+      <workItem from="1542649439658" duration="6341000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11123000" />
+    <option name="totallyTimeSpent" value="12140000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
@@ -677,18 +655,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/perfectpitch/PerfectPitch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/perfectpitch/challenge/Challenge.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/perfectpitch/PerfectPitch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
           <folding />
         </state>
       </provider>

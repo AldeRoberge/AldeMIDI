@@ -7,6 +7,8 @@ import java.util.function.Consumer;
 import javax.swing.*;
 
 import alde.commons.util.window.UtilityJFrame;
+import perfectpitch.player.ui.EditPlayerImage;
+import perfectpitch.player.ui.PlayerImageViewer;
 import perfectpitch.player.ui.chooser.panels.ChooseExistingOrNewPlayerPanel;
 import perfectpitch.player.ui.chooser.panels.CreateNewPlayerPanel;
 import perfectpitch.player.ui.chooser.panels.SelectExistingPlayerPanel;
@@ -45,7 +47,7 @@ public class PlayerChooserUI {
 	public PlayerChooserUI(Consumer<Player> callback) {
 		frame = new UtilityJFrame();
 		frame.setTitle("Player Selection");
-		frame.setBounds(100, 100, 500, 180);
+		frame.setBounds(100, 100, 500, 275);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setIconImage(GetResource.getSoftwareIcon());
 
@@ -72,10 +74,16 @@ public class PlayerChooserUI {
 
 				} else { //New player
 					System.out.println("New player...");
-
+					frame.setTitle("Player Creation");
 					JPanel createNewPlayerPanel = new CreateNewPlayerPanel(new Consumer<Player>() {
 						@Override
 						public void accept(Player t) {
+							setView(new EditPlayerImage(t, new Runnable() {
+								@Override
+								public void run() {
+									callback.accept(t);
+								}
+							}));
 							callback.accept(t);
 						}
 					}, new Runnable() {
@@ -84,9 +92,7 @@ public class PlayerChooserUI {
 							setMainMenu();
 						}
 					});
-
 					setView(createNewPlayerPanel);
-
 				}
 			}
 

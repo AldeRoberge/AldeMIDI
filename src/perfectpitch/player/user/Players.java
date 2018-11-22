@@ -8,6 +8,8 @@ import java.util.List;
 import org.slf4j.LoggerFactory;
 
 import alde.commons.util.file.ObjectSerializer;
+import crypto.PasswordStorage;
+import crypto.PasswordStorage.CannotPerformOperationException;
 
 public class Players {
 
@@ -29,11 +31,15 @@ public class Players {
 			System.out.println(p);
 		}
 
-		Player p = new Player("Big Nigga");
-
-		System.out.println("Saving to file new player : " + p);
-
-		saveToFile(p);
+		Player p;
+		try {
+			p = new Player("Big Nigga", PasswordStorage.createHash("Jesus"));
+			System.out.println("Saving to file new player : " + p);
+			saveToFile(p);
+		} catch (CannotPerformOperationException e) {
+			e.printStackTrace();
+			System.out.println("Error creating player!");
+		}
 
 	}
 

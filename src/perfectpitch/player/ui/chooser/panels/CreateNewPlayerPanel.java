@@ -16,14 +16,20 @@ import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import crypto.PasswordStorage;
+import crypto.PasswordStorage.CannotPerformOperationException;
 import perfectpitch.player.user.Player;
 import perfectpitch.player.user.Players;
+import javax.swing.JPasswordField;
+import java.awt.Component;
+import javax.swing.Box;
 
 public class CreateNewPlayerPanel extends JPanel {
 	private JTextField nameInputField;
 	private JLabel errorLabel;
 
 	private JButton btnCreate;
+	private JPasswordField passwordField;
 
 	/**
 	 * Create the panel.
@@ -44,17 +50,21 @@ public class CreateNewPlayerPanel extends JPanel {
 		errorLabel.setForeground(Color.RED);
 		panel.add(errorLabel, BorderLayout.SOUTH);
 
-		JPanel namePanel = new JPanel();
-		panel.add(namePanel, BorderLayout.CENTER);
+		JPanel userInfoPanel = new JPanel();
+		panel.add(userInfoPanel, BorderLayout.NORTH);
+		userInfoPanel.setLayout(new BoxLayout(userInfoPanel, BoxLayout.Y_AXIS));
+
+		JPanel userPanel = new JPanel();
+		userInfoPanel.add(userPanel);
 
 		JLabel nameInputLabel = new JLabel("Enter your name : ");
+		userPanel.add(nameInputLabel);
 		nameInputLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		namePanel.add(nameInputLabel);
 
 		nameInputField = new JTextField();
+		userPanel.add(nameInputField);
 		nameInputField.setHorizontalAlignment(SwingConstants.CENTER);
-		namePanel.add(nameInputField);
-		nameInputField.setColumns(15);
+		nameInputField.setColumns(20);
 
 		nameInputField.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
@@ -87,6 +97,16 @@ public class CreateNewPlayerPanel extends JPanel {
 			}
 		});
 
+		JPanel passwordPanel = new JPanel();
+		userInfoPanel.add(passwordPanel);
+
+		JLabel lblEnterYourPassword = new JLabel("Enter your password :  ");
+		passwordPanel.add(lblEnterYourPassword);
+
+		passwordField = new JPasswordField();
+		passwordPanel.add(passwordField);
+		passwordField.setColumns(17);
+
 		JPanel acceptPanel = new JPanel();
 		add(acceptPanel);
 		acceptPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -107,10 +127,15 @@ public class CreateNewPlayerPanel extends JPanel {
 				}
 
 				if (!alreadyExists) {
-					Player player = new Player(playerName);
-					callback.accept(player);
+					Player player;
+					try {
+						player = new Player(playerName, PasswordStorage.createHash(passwordField.getPassword()));
+						callback.accept(player);
+					} catch (CannotPerformOperationException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
-
 			}
 		});
 

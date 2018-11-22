@@ -7,16 +7,17 @@ import java.net.URISyntaxException;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import alde.commons.ExampleConsole;
 import alde.commons.util.SplashScreen;
 import midi.device.NotePlayer;
 import midi.device.impl.Device;
-import perfectpitch.properties.Properties;
-import perfectpitch.player.ui.PlayerInfoWindow;
 import perfectpitch.player.ui.chooser.PlayerChooserUI;
 import perfectpitch.player.user.Player;
+import perfectpitch.properties.Properties;
 import perfectpitch.util.GetResource;
 
 class PerfectPitch {
@@ -46,12 +47,22 @@ class PerfectPitch {
 	private PerfectPitch() {
 		setLookAndFeel();
 
+		setupDebuggerConsole();
+
 		showSplashScreen(new Runnable() {
 			@Override
 			public void run() {
 				loadConfigDeviceUI();
 			}
 		});
+	}
+
+	private void setupDebuggerConsole() {
+		int option = JOptionPane.showConfirmDialog(null, "Show debugger console?", "Show debugger console?", JOptionPane.YES_NO_OPTION);
+
+		if (option == 0) {
+			ExampleConsole e = new ExampleConsole();
+		}
 	}
 
 	private void loadConfigDeviceUI() {
@@ -66,13 +77,12 @@ class PerfectPitch {
 	}
 
 	private void loadPlayerChooserUI() {
-		PlayerChooserUI p = new PlayerChooserUI(new Consumer<Player>() {
+
+		new PlayerChooserUI(new Consumer<Player>() {
 			@Override
 			public void accept(Player p) {
 				player = p;
-
-				System.out.println("Received player!");
-
+				System.out.println("Received player, " + p);
 				Runnable r = new Runnable() {
 					@Override
 					public void run() {
@@ -81,11 +91,10 @@ class PerfectPitch {
 				};
 
 				if (!p.isConfigured()) {
-					new PlayerInfoWindow(p, r, true);
+
 				} else {
 					r.run();
 				}
-
 			}
 		});
 	}
