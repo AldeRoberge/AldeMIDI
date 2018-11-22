@@ -10,10 +10,14 @@ import javax.swing.JFrame;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import org.slf4j.LoggerFactory;
+
 import alde.commons.util.window.UtilityJFrame;
 
 class ColorChooser {
 
+	private static org.slf4j.Logger log = LoggerFactory.getLogger(ColorChooser.class);
+	
 	private JFrame frmColorChooser;
 
 	/**
@@ -26,7 +30,7 @@ class ColorChooser {
 					ColorChooser window = new ColorChooser(new Consumer<Color>() {
 						@Override
 						public void accept(Color t) {
-							System.out.println("Color choosed : " + t);
+							log.info("Color choosed : " + t);
 						}
 					});
 					window.frmColorChooser.setVisible(true);
@@ -54,7 +58,7 @@ class ColorChooser {
 		tcc.getSelectionModel().addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				Color newColor = tcc.getColor();
-				System.out.println("Color choosed : " + newColor);
+				log.info("Color choosed : " + newColor);
 				callback.accept(newColor);
 			}
 		});

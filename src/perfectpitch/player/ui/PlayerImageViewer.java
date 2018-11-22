@@ -54,7 +54,7 @@ public class PlayerImageViewer extends JPanel {
 		panel.add(playerNamePanel, BorderLayout.SOUTH);
 		playerNamePanel.setLayout(new BorderLayout(0, 0));
 
-		System.out.println("Name : " + player.getName());
+		log.info("Name : " + player.getName());
 
 		JLabel lblNewLabel = new JLabel(player.getName());
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));

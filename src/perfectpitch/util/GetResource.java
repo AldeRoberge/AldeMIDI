@@ -7,7 +7,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import org.slf4j.LoggerFactory;
+
 public class GetResource {
+
+	private static org.slf4j.Logger log = LoggerFactory.getLogger(GetResource.class);
 
 	public static BufferedImage getBufferedImage(String name) {
 		return (BufferedImage) getImage(name);
@@ -25,7 +29,7 @@ public class GetResource {
 
 		File file = new File(currentPath + path);
 
-		System.out.println("currentPath : " + currentPath);
+		log.info("currentPath : " + currentPath);
 
 		try {
 			return ImageIO.read(file);
@@ -33,7 +37,7 @@ public class GetResource {
 			e.printStackTrace();
 		}
 
-		System.err.println("Could not get image file '" + currentPath + path + "'.");
+		log.error("Could not get image file '" + currentPath + path + "'.");
 
 		return null;
 	}

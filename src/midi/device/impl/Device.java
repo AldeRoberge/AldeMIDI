@@ -11,6 +11,8 @@ import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Receiver;
 import javax.sound.midi.ShortMessage;
 
+import org.slf4j.LoggerFactory;
+
 import midi.device.NotePlayer;
 import midi.protocol.Note;
 
@@ -20,6 +22,8 @@ import midi.protocol.Note;
  */
 public class Device implements NotePlayer {
 
+	private static org.slf4j.Logger log = LoggerFactory.getLogger(Device.class);
+
 	private MidiDevice midiDevice;
 	private Receiver receiver;
 
@@ -28,7 +32,7 @@ public class Device implements NotePlayer {
 	private boolean isOpened = false;
 
 	public Device(MidiDevice midiDevice) {
-		System.out.println("MidiDevice is a " + midiDevice.getClass().getName());
+		log.info("MidiDevice is a " + midiDevice.getClass().getName());
 		this.midiDevice = midiDevice;
 	}
 
@@ -86,7 +90,7 @@ public class Device implements NotePlayer {
 
 			isOpened = true;
 		} else {
-			System.err.println("This device is already opened.");
+			log.error("This device is already opened.");
 		}
 
 	}
@@ -99,7 +103,7 @@ public class Device implements NotePlayer {
 
 			isOpened = false;
 		} else {
-			System.err.println("This device is already closed.");
+			log.error("This device is already closed.");
 		}
 
 	}
@@ -115,7 +119,7 @@ public class Device implements NotePlayer {
 
 	private void playNote(int noteCode, int velocity) {
 
-		System.out.println("Playing note " + noteCode);
+		log.info("Playing note " + noteCode);
 
 		if (!isOpened) {
 			open();

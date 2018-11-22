@@ -2,6 +2,8 @@ package perfectpitch;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +16,18 @@ import java.util.function.BiConsumer;
 import javax.sound.midi.MidiDevice.Info;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
-import javax.swing.*;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.WindowConstants;
+
+import org.slf4j.LoggerFactory;
 
 import alde.commons.util.window.UtilityJFrame;
 import midi.device.NotePlayer;
@@ -23,10 +36,10 @@ import midi.device.impl.Device;
 import midi.device.test.TestKeyboardInput;
 import midi.protocol.Note;
 import perfectpitch.util.GetResource;
-import java.awt.FlowLayout;
-import java.awt.Component;
 
 class ConfigDeviceUI {
+	
+	private static org.slf4j.Logger log = LoggerFactory.getLogger(ConfigDeviceUI.class);
 
 	private UtilityJFrame frame;
 
@@ -87,7 +100,7 @@ class ConfigDeviceUI {
 			public void itemStateChanged(ItemEvent e) {
 
 				Device notePlayer = (Device) performDeviceSelector.getSelectedItem();
-				System.out.println("Perform (input) device selected : '" + notePlayer + "'.");
+				log.info("Perform (input) device selected : '" + notePlayer + "'.");
 				performDevice = notePlayer;
 
 			}
@@ -150,12 +163,12 @@ class ConfigDeviceUI {
 				if (audioDevice != null) {
 
 					Note debugNote = Note.C;
-					System.out.println("Playing note '" + debugNote + "' on '" + audioDevice + "'.");
+					log.info("Playing note '" + debugNote + "' on '" + audioDevice + "'.");
 					audioDevice.playNote(debugNote);
 
 				} else {
 
-					System.err.println("Audio device is null!");
+					log.error("Audio device is null!");
 
 				}
 
@@ -205,7 +218,7 @@ class ConfigDeviceUI {
 
 	private void updateSelectedSoundDevice() {
 		NotePlayer notePlayer = (NotePlayer) soundDeviceSelector.getSelectedItem();
-		System.out.println("Output (sound) selected : '" + notePlayer + "'.");
+		log.info("Output (sound) selected : '" + notePlayer + "'.");
 		audioDevice = notePlayer;
 	}
 
@@ -216,9 +229,9 @@ class ConfigDeviceUI {
 
 			try {
 				midiDevices.add(new Device(MidiSystem.getMidiDevice(info)));
-				System.out.println("Added device : " + info);
+				log.info("Added device : " + info);
 			} catch (MidiUnavailableException e) {
-				System.out.println("Error with loading device : " + info);
+				log.info("Error with loading device : " + info);
 				e.printStackTrace();
 			}
 		}

@@ -97,7 +97,7 @@ public enum Note {
 
 	public static void main(String[] args) {
 		/*for (Note n : Note.values()) {
-			System.out.println("Value of midi.note : " + n.name + " for octave 5 is : " + n.getMidi(Octave.Five));
+			log.info("Value of midi.note : " + n.name + " for octave 5 is : " + n.getMidi(Octave.Five));
 		}*/
 
 		for (int i = 0; i < 127; i++) {

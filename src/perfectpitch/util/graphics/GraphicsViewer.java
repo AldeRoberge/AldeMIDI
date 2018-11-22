@@ -13,7 +13,11 @@ import java.util.TimerTask;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
+import org.slf4j.LoggerFactory;
+
 class GraphicsViewer extends JComponent {
+
+	private static org.slf4j.Logger log = LoggerFactory.getLogger(GraphicsViewer.class);
 
 	private static final long serialVersionUID = 1L;
 
@@ -67,7 +71,7 @@ class GraphicsViewer extends JComponent {
 		int height = this.getHeight();
 		int width = this.getWidth();
 
-		System.out.println("Size : Width : " + width + ", Height " + height);
+		log.info("Size : Width : " + width + ", Height " + height);
 
 		g.setColor(Color.GRAY);
 		g.fillRect(0, 0, width, height); //Draw background

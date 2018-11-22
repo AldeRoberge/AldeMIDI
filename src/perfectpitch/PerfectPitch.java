@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import org.slf4j.LoggerFactory;
+
 import alde.commons.ExampleConsole;
 import alde.commons.util.SplashScreen;
 import midi.device.NotePlayer;
@@ -21,6 +23,8 @@ import perfectpitch.properties.Properties;
 import perfectpitch.util.GetResource;
 
 class PerfectPitch {
+
+	private static org.slf4j.Logger log = LoggerFactory.getLogger(PerfectPitch.class);
 
 	ConfigDeviceUI configDevice;
 
@@ -82,11 +86,11 @@ class PerfectPitch {
 			@Override
 			public void accept(Player p) {
 				player = p;
-				System.out.println("Received player, " + p);
+				log.info("Received player, " + p);
 				Runnable r = new Runnable() {
 					@Override
 					public void run() {
-						System.out.println("Run game.");
+						log.info("Run game.");
 					}
 				};
 
@@ -100,13 +104,13 @@ class PerfectPitch {
 	}
 
 	private static void setLookAndFeel() {
-		System.out.println("Setting look and feel...");
+		log.info("Setting look and feel...");
 
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e1) {
 			e1.printStackTrace();
-			System.err.println("Error with setting look and feel");
+			log.error("Error with setting look and feel");
 		}
 	}
 

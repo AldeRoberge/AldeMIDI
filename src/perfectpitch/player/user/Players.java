@@ -25,20 +25,20 @@ public class Players {
 
 		List<Player> players = getPlayers();
 
-		System.out.println("Players : " + players.size());
+		log.info("Players : " + players.size());
 
 		for (Player p : players) {
-			System.out.println(p);
+			log.info(p.toString());
 		}
 
 		Player p;
 		try {
 			p = new Player("Big Nigga", PasswordStorage.createHash("Jesus"));
-			System.out.println("Saving to file new player : " + p);
+			log.info("Saving to file new player : " + p);
 			saveToFile(p);
 		} catch (CannotPerformOperationException e) {
 			e.printStackTrace();
-			System.out.println("Error creating player!");
+			log.info("Error creating player!");
 		}
 
 	}
@@ -66,7 +66,7 @@ public class Players {
 			for (ObjectSerializer<Player> p : serializedPlayers) {
 				if (p.getFile().equals(file)) {
 
-					System.out.println("Returning!");
+					log.info("Returning!");
 
 					return p.get();
 				}

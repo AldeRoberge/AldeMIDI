@@ -13,18 +13,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
+
+import org.slf4j.LoggerFactory;
 
 import alde.commons.util.WrapLayout;
 import crypto.PasswordStorage;
 import crypto.PasswordStorage.CannotPerformOperationException;
 import crypto.PasswordStorage.InvalidHashException;
 import perfectpitch.player.ui.PlayerImageViewer;
-import perfectpitch.player.ui.PlayerInfoPanel;
 import perfectpitch.player.user.Player;
 import perfectpitch.player.user.Players;
 
 public class SelectExistingPlayerPanel extends JPanel {
+
+	private static org.slf4j.Logger log = LoggerFactory.getLogger(SelectExistingPlayerPanel.class);
 
 	Player selected;
 
@@ -59,21 +61,21 @@ public class SelectExistingPlayerPanel extends JPanel {
 						String password = getPassword();
 
 						if (password == null || password.isEmpty()) {
-							System.out.println("Password is null or empty");
+							log.info("Password is null or empty");
 						} else {
 							if (PasswordStorage.verifyPassword(password, player.getHashedPassword())) {
-								System.out.println("Verified!");
+								log.info("Verified!");
 								callback.accept(player);
 							} else {
-								System.out.println("Not verified...");
+								log.info("Not verified...");
 							}
 						}
 
 					} catch (CannotPerformOperationException e) {
-						System.out.println("Error...");
+						log.info("Error...");
 						e.printStackTrace();
 					} catch (InvalidHashException e) {
-						System.out.println("Error..");
+						log.info("Error..");
 						e.printStackTrace();
 					}
 

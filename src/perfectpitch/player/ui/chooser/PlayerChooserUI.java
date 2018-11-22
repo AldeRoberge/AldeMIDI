@@ -4,11 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.util.function.Consumer;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+
+import org.slf4j.LoggerFactory;
 
 import alde.commons.util.window.UtilityJFrame;
 import perfectpitch.player.ui.EditPlayerImage;
-import perfectpitch.player.ui.PlayerImageViewer;
 import perfectpitch.player.ui.chooser.panels.ChooseExistingOrNewPlayerPanel;
 import perfectpitch.player.ui.chooser.panels.CreateNewPlayerPanel;
 import perfectpitch.player.ui.chooser.panels.SelectExistingPlayerPanel;
@@ -16,6 +18,8 @@ import perfectpitch.player.user.Player;
 import perfectpitch.util.GetResource;
 
 public class PlayerChooserUI {
+
+	private static org.slf4j.Logger log = LoggerFactory.getLogger(PlayerChooserUI.class);
 
 	private JPanel existingOrReturning;
 
@@ -31,7 +35,7 @@ public class PlayerChooserUI {
 					PlayerChooserUI window = new PlayerChooserUI(new Consumer<Player>() {
 						@Override
 						public void accept(Player p) {
-							System.out.println("Received player : " + p.getName());
+							log.info("Received player : " + p.getName());
 						}
 					});
 				} catch (Exception e) {
@@ -56,7 +60,7 @@ public class PlayerChooserUI {
 			@Override
 			public void accept(Boolean existingPlayer) {
 				if (existingPlayer) { //Existing player
-					System.out.println("Existing player...");
+					log.info("Existing player...");
 
 					JPanel selectExistingPanel = new SelectExistingPlayerPanel(new Consumer<Player>() {
 						@Override
@@ -73,7 +77,7 @@ public class PlayerChooserUI {
 					setView(selectExistingPanel);
 
 				} else { //New player
-					System.out.println("New player...");
+					log.info("New player...");
 					frame.setTitle("Player Creation");
 					JPanel createNewPlayerPanel = new CreateNewPlayerPanel(new Consumer<Player>() {
 						@Override

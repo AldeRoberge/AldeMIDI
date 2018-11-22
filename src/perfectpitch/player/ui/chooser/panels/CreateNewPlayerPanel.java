@@ -11,6 +11,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
@@ -20,9 +21,6 @@ import crypto.PasswordStorage;
 import crypto.PasswordStorage.CannotPerformOperationException;
 import perfectpitch.player.user.Player;
 import perfectpitch.player.user.Players;
-import javax.swing.JPasswordField;
-import java.awt.Component;
-import javax.swing.Box;
 
 public class CreateNewPlayerPanel extends JPanel {
 	private JTextField nameInputField;
