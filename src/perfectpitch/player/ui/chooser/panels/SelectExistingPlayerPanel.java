@@ -17,9 +17,9 @@ import javax.swing.JScrollPane;
 import org.slf4j.LoggerFactory;
 
 import alde.commons.util.WrapLayout;
-import crypto.PasswordStorage;
-import crypto.PasswordStorage.CannotPerformOperationException;
-import crypto.PasswordStorage.InvalidHashException;
+import perfectpitch.player.password.PasswordStorage;
+import perfectpitch.player.password.PasswordStorage.CannotPerformOperationException;
+import perfectpitch.player.password.PasswordStorage.InvalidHashException;
 import perfectpitch.player.ui.PlayerImageViewer;
 import perfectpitch.player.user.Player;
 import perfectpitch.player.user.Players;

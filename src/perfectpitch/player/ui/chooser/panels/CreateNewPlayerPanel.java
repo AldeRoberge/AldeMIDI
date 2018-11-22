@@ -17,8 +17,8 @@ import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import crypto.PasswordStorage;
-import crypto.PasswordStorage.CannotPerformOperationException;
+import perfectpitch.player.password.PasswordStorage;
+import perfectpitch.player.password.PasswordStorage.CannotPerformOperationException;
 import perfectpitch.player.user.Player;
 import perfectpitch.player.user.Players;
 

@@ -8,8 +8,8 @@ import java.util.List;
 import org.slf4j.LoggerFactory;
 
 import alde.commons.util.file.ObjectSerializer;
-import crypto.PasswordStorage;
-import crypto.PasswordStorage.CannotPerformOperationException;
+import perfectpitch.player.password.PasswordStorage;
+import perfectpitch.player.password.PasswordStorage.CannotPerformOperationException;
 
 public class Players {
 

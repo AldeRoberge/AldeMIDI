@@ -1,4 +1,4 @@
-package crypto;
+package perfectpitch.player.password;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

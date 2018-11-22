@@ -17,7 +17,5 @@ class ChallengeHandler {
 				uncompletedChallenges.remove(challenge);
 			}
 		});
-
 	}
-
 }
