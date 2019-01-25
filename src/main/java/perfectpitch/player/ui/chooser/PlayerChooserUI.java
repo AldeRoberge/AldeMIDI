@@ -14,7 +14,7 @@ import perfectpitch.player.ui.EditPlayerImage;
 import perfectpitch.player.ui.chooser.panels.ChooseExistingOrNewPlayerPanel;
 import perfectpitch.player.ui.chooser.panels.CreateNewPlayerPanel;
 import perfectpitch.player.ui.chooser.panels.SelectExistingPlayerPanel;
-import perfectpitch.player.user.Player;
+import perfectpitch.player.Player;
 import perfectpitch.util.GetResource;
 
 public class PlayerChooserUI {
@@ -56,7 +56,6 @@ public class PlayerChooserUI {
 		frame.setIconImage(GetResource.getSoftwareIcon());
 
 		existingOrReturning = new ChooseExistingOrNewPlayerPanel(new Consumer<Boolean>() {
-
 			@Override
 			public void accept(Boolean existingPlayer) {
 				if (existingPlayer) { //Existing player
@@ -67,35 +66,17 @@ public class PlayerChooserUI {
 						public void accept(Player t) {
 							callback.accept(t);
 						}
-					}, new Runnable() {
-						@Override
-						public void run() {
-							setMainMenu();
-						}
-					});
+					}, () -> setMainMenu());
 
 					setView(selectExistingPanel);
 
 				} else { //New player
 					log.info("New player...");
 					frame.setTitle("Player Creation");
-					JPanel createNewPlayerPanel = new CreateNewPlayerPanel(new Consumer<Player>() {
-						@Override
-						public void accept(Player t) {
-							setView(new EditPlayerImage(t, new Runnable() {
-								@Override
-								public void run() {
-									callback.accept(t);
-								}
-							}));
-							callback.accept(t);
-						}
-					}, new Runnable() {
-						@Override
-						public void run() {
-							setMainMenu();
-						}
-					});
+					JPanel createNewPlayerPanel = new CreateNewPlayerPanel(t -> {
+						setView(new EditPlayerImage(t, () -> callback.accept(t)));
+						callback.accept(t);
+					}, () -> setMainMenu());
 					setView(createNewPlayerPanel);
 				}
 			}

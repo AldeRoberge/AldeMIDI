@@ -1,4 +1,4 @@
-package perfectpitch.player.user;
+package perfectpitch.player;
 
 import alde.commons.util.file.ObjectSerializer;
 import org.slf4j.LoggerFactory;
@@ -16,8 +16,6 @@ public class Players {
 
     private static final String PLAYERS_FOLDER_PATH = "players/";
 
-    List<Player> players = new ArrayList<>();
-
     public static void main(String[] args) {
 
         // Jon or bingo
@@ -32,7 +30,7 @@ public class Players {
 
         Player p;
         try {
-            p = new Player("Big Nigga", PasswordStorage.createHash("Jesus"));
+            p = new Player("Big Nibba", PasswordStorage.createHash("Jesus"));
             log.info("Saving to file new player : " + p);
             saveToFile(p);
         } catch (CannotPerformOperationException e) {

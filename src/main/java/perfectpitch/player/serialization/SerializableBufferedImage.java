@@ -1,4 +1,4 @@
-package perfectpitch.player.user.serialization;
+package perfectpitch.player.serialization;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;

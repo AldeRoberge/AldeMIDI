@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 import alde.commons.fileImporter.FileImporter;
 import alde.commons.util.file.extensions.ExtensionFilter;
-import perfectpitch.player.user.Player;
+import perfectpitch.player.Player;
 
 public class EditPlayerImage extends JPanel {
 

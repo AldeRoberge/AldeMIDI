@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import perfectpitch.player.user.Player;
+import perfectpitch.player.Player;
 
 public class PlayerInfoPanel extends JPanel {
 

@@ -19,8 +19,8 @@ import javax.swing.event.DocumentListener;
 
 import perfectpitch.player.password.PasswordStorage;
 import perfectpitch.player.password.PasswordStorage.CannotPerformOperationException;
-import perfectpitch.player.user.Player;
-import perfectpitch.player.user.Players;
+import perfectpitch.player.Player;
+import perfectpitch.player.Players;
 
 public class CreateNewPlayerPanel extends JPanel {
 	private JTextField nameInputField;

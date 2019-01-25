@@ -16,7 +16,7 @@ import javax.swing.border.LineBorder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import perfectpitch.player.user.Player;
+import perfectpitch.player.Player;
 
 public class PlayerImageViewer extends JPanel {
 

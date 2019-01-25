@@ -44,6 +44,8 @@ class ConfigDeviceUI {
     private static Property selectedPerformDevice = new Property("PERFORM_DEVICE", "<none>", configDevice);
     private static Property selectedOutputDevice = new Property("OUTPUT_DEVICE", "<none>", configDevice);
 
+    private static Property hasBeenConfiguredOnce = new Property("HAS_BEEN_CONFIGURED_ONCE", Property.FALSE, configDevice);
+
     /**
      * Create the application.
      */
@@ -75,10 +77,10 @@ class ConfigDeviceUI {
         Component horizontalStrut = Box.createHorizontalStrut(0);
         perfomDevicePanel.add(horizontalStrut);
 
-        JButton btnTestInput = new JButton("  Test input  ");
-        perfomDevicePanel.add(btnTestInput);
-        btnTestInput.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-        btnTestInput.addActionListener(new ActionListener() {
+        JButton testInputBtn = new JButton("  Test input  ");
+        perfomDevicePanel.add(testInputBtn);
+        testInputBtn.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+        testInputBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new TestKeyboardInput(performDevice);
             }
@@ -167,13 +169,14 @@ class ConfigDeviceUI {
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         buttonPanel.add(btnHelp);
 
-        btnTestInput = new JButton("Next");
-        btnTestInput.addActionListener(e -> {
+        JButton nextBtn = new JButton("Next");
+        nextBtn.addActionListener(e -> {
             showMessage("Awesome! Let's do it.");
+            hasBeenConfiguredOnce.setValue(Property.TRUE);
             callBack.accept(performDevice, outputDevice);
             frame.dispose();
         });
-        buttonPanel.add(btnTestInput);
+        buttonPanel.add(nextBtn);
 
         for (NotePlayer d : findMidiDevices()) {
             outputDeviceSelector.addItem(d);
@@ -183,7 +186,11 @@ class ConfigDeviceUI {
             }
         }
 
-        frame.setVisible(true);
+        if (hasBeenConfiguredOnce.getValueAsBoolean()) {
+            nextBtn.doClick();
+        } else {
+            frame.setVisible(true);
+        }
 
     }
 

@@ -6,7 +6,7 @@ import midi.device.NotePlayer;
 import midi.device.impl.Device;
 import org.slf4j.LoggerFactory;
 import perfectpitch.player.ui.chooser.PlayerChooserUI;
-import perfectpitch.player.user.Player;
+import perfectpitch.player.Player;
 import perfectpitch.properties.Properties;
 import perfectpitch.util.GetResource;
 
@@ -15,7 +15,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URISyntaxException;
-import java.util.function.Consumer;
 
 class PerfectPitch {
 
@@ -46,17 +45,13 @@ class PerfectPitch {
     private PerfectPitch() {
         setLookAndFeel();
 
-        setupDebuggerConsole();
+        //setupDebuggerConsole();
 
-        showSplashScreen(new Runnable() {
-            @Override
-            public void run() {
-                loadConfigDeviceUI();
-            }
-        });
+        showSplashScreen(() -> loadConfigDeviceUI());
     }
 
     private void setupDebuggerConsole() {
+
         int option = JOptionPane.showConfirmDialog(null, "Show debugger console?", "Show debugger console?", JOptionPane.YES_NO_OPTION);
 
         if (option == 0) {
@@ -81,9 +76,6 @@ class PerfectPitch {
                 @Override
                 public void run() {
                     log.info("Run game.");
-
-
-
                 }
             };
 
@@ -123,7 +115,7 @@ class PerfectPitch {
                 s.setRunnableAfterClose(r);
 
                 try {
-                    s.setSound(new File(ConfigDeviceUI.class.getResource("/splashScreen/boot.wav").toURI()));
+                    s.setSound(new File(ConfigDeviceUI.class.getResource("res/splashScreen/boot.wav").toURI()));
                 } catch (URISyntaxException e1) {
                     e1.printStackTrace();
                 }

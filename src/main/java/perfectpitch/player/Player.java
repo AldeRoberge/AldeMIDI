@@ -1,8 +1,8 @@
-package perfectpitch.player.user;
+package perfectpitch.player;
 
 import perfectpitch.achievement.Achievement;
 import perfectpitch.achievement.Achievements;
-import perfectpitch.player.user.serialization.SerializableBufferedImage;
+import perfectpitch.player.serialization.SerializableBufferedImage;
 import perfectpitch.util.GetResource;
 import perfectpitch.util.ResizeBufferedImage;
 

@@ -21,8 +21,8 @@ import perfectpitch.player.password.PasswordStorage;
 import perfectpitch.player.password.PasswordStorage.CannotPerformOperationException;
 import perfectpitch.player.password.PasswordStorage.InvalidHashException;
 import perfectpitch.player.ui.PlayerImageViewer;
-import perfectpitch.player.user.Player;
-import perfectpitch.player.user.Players;
+import perfectpitch.player.Player;
+import perfectpitch.player.Players;
 
 public class SelectExistingPlayerPanel extends JPanel {
 
