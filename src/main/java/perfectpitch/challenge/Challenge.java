@@ -34,7 +34,7 @@ abstract class Challenge {
 
 	/**
 	 * Add a consumer that accepts the CompletedChallenge when the Challenge is completed
-	 * @param consumer
+	 * @param completedChallengeListener
 	 */
 	public void addListener(Consumer<Challenge> completedChallengeListener) {
 		this.completedChallengeListeners.add(completedChallengeListener);

@@ -8,6 +8,9 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
+/**
+ * Simple Hashing mechanism to store passwords
+ */
 public class PasswordStorage {
 
 	@SuppressWarnings("serial")

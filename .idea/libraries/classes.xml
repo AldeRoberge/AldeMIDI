@@ -1,0 +1,36 @@
+<component name="libraryTable">
+  <library name="classes">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/jfreechart-1.0.19.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/orsonpdf-1.6-eval.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/jfreechart-1.0.19-experimental.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/commons-configuration-1.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/slf4j-api-1.7.25.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/jcommon-1.0.23.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/swtgraphics2d.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/commons-collections4-4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/mp3spi1.9.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/commons-logging-1.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/commons-lang-2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/servlet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/logback-classic-1.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/hamcrest-core-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/logback-core-1.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/commons-collections-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/basicplayer3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/orsoncharts-1.4-eval-nofx.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/jfreesvg-2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/kj_dsp1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/tritonus-utils.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/commons-collections4-4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/junit-4.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/jfreechart-1.0.19-swt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/commons-io-2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/target/classes/commons-lang3-3.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

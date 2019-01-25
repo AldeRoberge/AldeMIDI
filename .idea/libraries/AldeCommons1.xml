@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="AldeCommons1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../AldeCommons/classes/artifacts/AldeCommons_jar/AldeCommons.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
