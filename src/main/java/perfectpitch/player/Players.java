@@ -44,11 +44,18 @@ public class Players {
 
         List<Player> players = new ArrayList<>();
 
-        File folder = new File(PLAYERS_FOLDER_PATH);
-        File[] listOfFiles = folder.listFiles();
+        File playerFolder = new File(PLAYERS_FOLDER_PATH);
+        File[] listOfFiles = playerFolder.listFiles();
 
         if (listOfFiles == null) {
-            log.info("No players folder found. Creation of a new folder at '" + folder.getAbsolutePath() + "'. Success : " + folder.mkdirs() + ".");
+
+            boolean success = playerFolder.mkdir();
+
+            log.info("No players folder found.");
+
+            if (!success) {
+                log.error("Could not create folder 'players' in " + playerFolder.getAbsolutePath() + "!");
+            }
 
         } else {
             for (File listOfFile : listOfFiles) {
@@ -99,7 +106,9 @@ public class Players {
         }
 
         try {
-            file.createNewFile();
+            boolean success = file.createNewFile();
+            log.info("Creating new player file at : '" + file.getAbsolutePath() + "'. Success : " + success + ".");
+
         } catch (IOException e) {
             log.error("Could not create file " + file.getAbsolutePath() + "!");
             e.printStackTrace();
