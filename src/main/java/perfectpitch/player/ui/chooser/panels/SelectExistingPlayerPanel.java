@@ -43,35 +43,32 @@ public class SelectExistingPlayerPanel extends JPanel {
 
         for (Player p : Players.getPlayers()) {
 
-            warpLayout.add(new SelectablePanel<Player>(new PlayerImageViewer(p, false), p, new Consumer<Player>() {
-                @Override
-                public void accept(Player player) {
+            warpLayout.add(new SelectablePanel<>(new PlayerImageViewer(p, false), p, player -> {
 
-                    try {
+                try {
 
-                        String password = getPassword();
+                    String password = getPassword();
 
-                        if (password == null || password.isEmpty()) {
-                            log.info("Password is null or empty");
+                    if (password == null || password.isEmpty()) {
+                        log.info("Password is null or empty");
+                    } else {
+                        if (PasswordStorage.verifyPassword(password, player.getHashedPassword())) {
+                            log.info("Verified!");
+                            callback.accept(player);
                         } else {
-                            if (PasswordStorage.verifyPassword(password, player.getHashedPassword())) {
-                                log.info("Verified!");
-                                callback.accept(player);
-                            } else {
-                                log.info("Wrong password, not verified...");
-                                JOptionPane.showMessageDialog(null, "Error", "Wrong password", JOptionPane.INFORMATION_MESSAGE, null);
-                            }
+                            log.info("Wrong password, not verified...");
+                            JOptionPane.showMessageDialog(null, "Wrong password", "Error", JOptionPane.INFORMATION_MESSAGE, null);
                         }
-
-                    } catch (CannotPerformOperationException e) {
-                        log.info("Error...");
-                        e.printStackTrace();
-                    } catch (InvalidHashException e) {
-                        log.info("Error..");
-                        e.printStackTrace();
                     }
 
+                } catch (CannotPerformOperationException e) {
+                    log.info("Error...");
+                    e.printStackTrace();
+                } catch (InvalidHashException e) {
+                    log.info("Error..");
+                    e.printStackTrace();
                 }
+
             }));
             //playersComboBox.addItem(p);
         }

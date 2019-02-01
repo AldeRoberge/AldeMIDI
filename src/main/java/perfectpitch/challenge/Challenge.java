@@ -1,53 +1,32 @@
 package perfectpitch.challenge;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Consumer;
 
 abstract class Challenge {
 
-	// If it's completed
-	private boolean isCompleted;
+    public float timeStart;
+    public float timeEnd;
 
-	private float timeStart;
+    private boolean isCompleted = false;
 
-	// Time taken to complete
-	private float timeEnd;
+    private final Consumer<Challenge> completedChallengeListener;
 
-	// Experience points
-	int EXP;
+    public Challenge(Consumer<Challenge> completedChallengeListener) {
+        this.completedChallengeListener = completedChallengeListener;
+    }
 
-	public void completed() throws Exception {
-		if (isCompleted) {
-			throw new Exception("Is aleady completed.");
-		} else {
-			isCompleted = true;
-			timeEnd = System.currentTimeMillis() - timeStart;
-			tellListeners();
-		}
-	}
+    public void begin() {
+        timeStart = System.currentTimeMillis();
+    }
 
-	/**
-	 * List of Consumers that accept the CompletedChallenge
-	 */
-	private List<Consumer<Challenge>> completedChallengeListeners = new ArrayList<>();
-
-	/**
-	 * Add a consumer that accepts the CompletedChallenge when the Challenge is completed
-	 * @param completedChallengeListener
-	 */
-	public void addListener(Consumer<Challenge> completedChallengeListener) {
-		this.completedChallengeListeners.add(completedChallengeListener);
-	}
-
-	private void tellListeners() {
-		for (Consumer<Challenge> listener : completedChallengeListeners) {
-			listener.accept(this);
-		}
-	}
-
-	public Challenge(int EXP) {
-		isCompleted = false;
-	}
+    public void completed() throws Exception {
+        if (isCompleted) {
+            throw new Exception("Is already completed.");
+        } else {
+            isCompleted = true;
+            timeEnd = System.currentTimeMillis() - timeStart;
+            completedChallengeListener.accept(this);
+        }
+    }
 
 }

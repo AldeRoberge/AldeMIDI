@@ -63,7 +63,8 @@ public enum Note {
 		//return Note.valueOf(rank).set
 	}
 
-	private static Note getNote(int rank) {
+	// Returns note from rank (0 to 11) with octave 5
+	public static Note getNote(int rank) {
 		switch (rank) {
 			case 0:
 				return C;
